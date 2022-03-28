@@ -13,14 +13,17 @@ public class PersonDalTest
     {
         //arrange
         var personDal = new PersonDal();
-        //act
-        var rowsAffected = personDal.AddPerson(new PersonDto()
+        var personDto = new PersonDto()
         {
-        Username = "TestUser",
-        Email = "Test@mail.com"
-        });
+            Username = "TestUser",
+            Email = "Test@mail.com"
+        };
+        //act
+        var rowsAffected = personDal.AddPerson(personDto);
         //assert
         Assert.AreEqual(1, rowsAffected);
+        personDal.RemovePerson(personDto);
+
     }
 
     [TestMethod]

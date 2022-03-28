@@ -18,8 +18,8 @@ public class PersonDal : IPerson
         var rowsAffected = 0;
         using (var cmd = new SqlCommand(sql, connection))
         {
-            cmd.Parameters.AddWithValue("@email", personDto.Email);
             cmd.Parameters.AddWithValue("@username", personDto.Username);
+            cmd.Parameters.AddWithValue("@email", personDto.Email);
             rowsAffected = cmd.ExecuteNonQuery();
         }
         connection.Close();
