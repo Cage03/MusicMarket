@@ -1,17 +1,32 @@
+@model MarketViewModel
+
 @{
     ViewData["Title"] = "Market";
 }
 <div class="market-screen">
-    <div class="btn-add-advert"></div>
-    @for (int i = 0; i < 20; i++)
+    <div class="btn-add-advert standard-btn btn-active">
+        <a asp-controller="home" asp-action="AddAdvertisement">Add Advert</a>
+    </div>
+    
+    @if (Model.Advertisements.Any())
     {
-        <div class="advert-block">
-            <img src="~/images/search_icon.png" alt="search-icon">
-            <p id="itemName">Placeholder</p>
-            <p id="itemPrice">$5.00</p>
-            <p id="itemStatus">Placeholder</p>
-        </div>
+        foreach (var advert in Model.Advertisements)
+        {
+            <div class="advert-block" onclick="showElement('advert-modal'); showElement('modal-background')">
+                <img src="~/images/search_icon.png" alt="search-icon">
+                <p id="itemName">@advert.Name</p>
+                <p id="itemPrice">@advert.Price</p>
+                <p id="itemStatus">@advert.Status</p>
+            </div>
+        }
     }
+    <div class="advert-modal" id="advert-modal">
+        <p id="modal-itemName"></p>
+        <p id="modal-itemPrice"></p>
+        <p id="modal-itemDescription"></p>
+        <img src="~/images/search_icon.png" alt="search-icon">
+    </div>
+    <div class="advert-modal-background" id="modal-background" onclick="hideElement('advert-modal'); hideElement('modal-background')"></div>
 </div>
 
 

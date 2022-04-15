@@ -140,4 +140,9 @@
       <Content Remove="MusicMarketInterface\**" />
     </ItemGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="MusicMarketDAL\MusicMarketDAL.csproj" />
+      <ProjectReference Include="MusicMarketLogic\MusicMarketLogic.csproj" />
+    </ItemGroup>
+
 </Project>

@@ -7,7 +7,6 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\MusicMarket.csproj" />
       <ProjectReference Include="..\MusicMarketInterface\MusicMarketInterface.csproj" />
     </ItemGroup>
 

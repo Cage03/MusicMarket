@@ -14,7 +14,7 @@ public class MessageContainerTest
     {
         //arrange
         var container = new MessageContainer();
-        var message = new Message("I would like to make an offer.", DateTime.Now, 6);
+        var message = new Message("I would like to make an offer.", 7, 6);
         //act
         container.AddMessage(message);
         //assert
@@ -26,7 +26,7 @@ public class MessageContainerTest
     {
         //arrange
         var container = new MessageContainer();
-        var message = new Message("I would like to make an offer.", DateTime.Now, 6);
+        var message = new Message("I would like to make an offer.", 3, 6);
         container.AddMessage(message);
         //act
         container.AddMessage(message);
@@ -41,7 +41,7 @@ public class MessageContainerTest
     {
         //arrange
         var container = new MessageContainer();
-        var message = new Message("", DateTime.Now, 2);
+        var message = new Message("", 6, 2);
         //act
         container.AddMessage(message);
         //assert
@@ -54,7 +54,7 @@ public class MessageContainerTest
     {
         //arrange
         var container = new MessageContainer();
-        var message = new Message("I would like to make an offer", DateTime.Now, 5);
+        var message = new Message("I would like to make an offer", 2, 5);
         container.AddMessage(message);
         //act
         container.RemoveMessage(message);
@@ -69,7 +69,7 @@ public class MessageContainerTest
     {
         //arrange
         var container = new MessageContainer();
-        var message = new Message("I would like to make an offer", DateTime.Now, 7);
+        var message = new Message("I would like to make an offer", 19, 7);
         //act
         container.RemoveMessage(message);
         //assert

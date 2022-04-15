@@ -18,7 +18,7 @@ public class MessageDalTest
         var rowsAffected = messageDal.AddMessage(new MessageDto()
         {
             Content = "TestContent",
-            Date = DateTime.Now
+            SenderId = 1
         });
         //assert
         Assert.AreEqual(1, rowsAffected);
@@ -32,7 +32,7 @@ public class MessageDalTest
         messageDal.AddMessage(new MessageDto()
         {
             Content = "Test",
-            Date = DateTime.Now
+            SenderId = 6
         });
         //act
         var rowsAffected = messageDal.RemoveMessage(new MessageDto()

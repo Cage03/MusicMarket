@@ -12,11 +12,11 @@ public class MessageTest
     {
         //arrange
         var content = "I'd like to make an offer";
-        DateTime date = new DateTime(2022, 12, 25);
-        var personId = 4;
+        var receiverId = 6;
+        var senderId = 4;
         //act
-        var message = new Message(content, date, personId);
+        var message = new Message(content, receiverId, senderId);
         //assert
-        Assert.IsTrue(message.Content==content && message.Date==date && message.PersonId==personId);
+        Assert.IsTrue(message.Content==content && message.ReceiverId==receiverId && message.SenderId==senderId);
     }
 }

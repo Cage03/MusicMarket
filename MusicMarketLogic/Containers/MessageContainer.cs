@@ -23,7 +23,7 @@ public class MessageContainer
             throw new ArgumentException("Cannot add duplicate message");
         }
 
-        if (string.IsNullOrWhiteSpace(message.Content) || message.Date == null)
+        if (string.IsNullOrWhiteSpace(message.Content))
         {
             throw new ArgumentException("Not all information is given");
         }

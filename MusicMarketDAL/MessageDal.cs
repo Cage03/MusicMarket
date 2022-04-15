@@ -19,7 +19,6 @@ public class MessageDal : IMessage
         using (var cmd = new SqlCommand(sql, connection))
         {
             cmd.Parameters.AddWithValue("@content", messageDto.Content);
-            cmd.Parameters.AddWithValue("@date", messageDto.Date);
             rowsAffected = cmd.ExecuteNonQuery();
         }
         connection.Close();

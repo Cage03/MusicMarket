@@ -8,7 +8,6 @@ namespace MusicMarketUnitTests.DalTests;
 public class PersonDalTest
 {
     [TestMethod]
-
     public void AddPersonTest()
     {
         //arrange

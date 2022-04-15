@@ -23,7 +23,7 @@ public class AuctionContainer
             throw new ArgumentException("Cannot add duplicate auction");
         }
 
-        if (string.IsNullOrWhiteSpace(auction.Name) || auction.Date == null)
+        if (string.IsNullOrWhiteSpace(auction.Name))
         {
             throw new ArgumentException("Not all information is given");
         }

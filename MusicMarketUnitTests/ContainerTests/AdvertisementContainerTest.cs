@@ -10,23 +10,23 @@ namespace MusicMarketUnitTests.ContainerTests;
 public class AdvertisementContainerTest
 {
     [TestMethod]
-    public void AddAdvertisementTest()
+    public void AddAdvertisementTest() 
     {
         //arrange
         var container = new AdvertisementContainer();
-        var advertisement = new Advertisement(4, DateTime.Now, "Table");
+        var advertisement = new Advertisement("testName", "testDescription", 5.01,"true");
         //act
         container.AddAdvertisement(advertisement);
         //assert
         Assert.IsTrue(container.GetAdvertisements().Contains(advertisement));
     }
     [TestMethod]
-    [ExpectedException(typeof(ArgumentException))]
+    [ExpectedException(typeof(ArgumentException))] //TODO test breaks because of testing :)
     public void AddAlreadyContainedAdTest()
     {
         //arrange
         var container = new AdvertisementContainer();
-        var advertisement = new Advertisement(4, DateTime.Now, "Table");
+        var advertisement = new Advertisement("testName", "testDescription", 5.02,"true");
         container.AddAdvertisement(advertisement);
         //act
         container.AddAdvertisement(advertisement);
@@ -34,12 +34,12 @@ public class AdvertisementContainerTest
         Assert.IsTrue(container.GetAdvertisements().Count==1);
     }
     [TestMethod]
-    [ExpectedException(typeof(ArgumentException))]
+    [ExpectedException(typeof(ArgumentException))] //TODO test breaks because of testing :)
     public void AddEmptyValueAdvertTest()
     {
         //arrange
         var container = new AdvertisementContainer();
-        var advertisement = new Advertisement(4, DateTime.Now, "");
+        var advertisement = new Advertisement("", "testDescription", 5.01,"true");
         //act
         container.AddAdvertisement(advertisement);
         //assert
@@ -50,7 +50,7 @@ public class AdvertisementContainerTest
     {
         //arrange
         var container = new AdvertisementContainer();
-        var advertisement = new Advertisement(4, DateTime.Now, "Table");
+        var advertisement = new Advertisement("testName", "testDescription", 5.01,"true");
         container.AddAdvertisement(advertisement);
         //act
         container.RemoveAdvertisement(advertisement);
@@ -63,7 +63,7 @@ public class AdvertisementContainerTest
     {
         //arrange
         var container = new AdvertisementContainer();
-        var advertisement = new Advertisement(4, DateTime.Now, "Table");
+        var advertisement = new Advertisement("testName", "testDescription", 5.01,"true");
         //act
         container.RemoveAdvertisement(advertisement);
         //assert

@@ -3,14 +3,17 @@ namespace MusicMarketLogic.Classes;
 public class Message
 {
     public string Content { get; private set; }
-    public DateTime Date { get; private set; }
-    public int PersonId { get; private set; }
-
-    public Message(string content, DateTime date, int personId)
+    public int SenderId { get; private set; }
+    
+    public int ReceiverId { get; private set; }
+    
+    
+    
+    public Message(string content, int senderId, int receiverId)
     {
         Content = content;
-        Date = date;
-        PersonId = personId;
+        SenderId = senderId;
+        ReceiverId = receiverId;
     }
 
     public void SetContent(string content)

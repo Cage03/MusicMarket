@@ -4,23 +4,44 @@
     height:580px;
     width:80%;
     border: 1px solid black;
-    
-}.market-screen{
-    position:absolute;
-    margin-top:70px;
-    height:580px;
-    width:75%;
-    border: 1px solid black;
-    overflow:auto;
-    min-width:740px;
 }
+.market-screen{
+    display:flex;
+    align-items: flex-start;
+    align-content:space-between;
+    flex-flow:wrap;
+    justify-content: center;
+    overflow:auto;
+}
+.standard-btn{
+    position:absolute;
+    height:35px;
+    width:150px;
+    border:1px solid black;
+    box-shadow:2px 5px dimgrey;
+    color:black;
+    text-align:center;
+    cursor:pointer;
+    white-space: nowrap;
+}
+
+.btn-active:hover{
+    background-color:lightgrey;
+}
+.btn-active:active {
+    background-color: darkgrey;
+    box-shadow: 1px 3px black;
+    transform: translateY(4px);
+}
+
  .advert-block{
      height:300px;
      width: 40%;
      margin-left:40px;
      margin-top:10px;
      display:inline-block;
-     box-shadow:2px 5px 2px 2px dimgrey;
+     border: 1px solid black;
+     box-shadow:2px 5px 2px dimgrey;
      cursor:pointer;
      background:transparent;
  }
@@ -44,3 +65,140 @@
      margin-left:45px;
      margin-top:100px;
  }
+ 
+ .advert-modal{
+     position:fixed;
+     margin-top:5%;
+     height:80%;
+     width:90%;
+     background-color:white;
+     border:2px solid black;
+     border-radius:24px;
+     display:none;
+     z-index:1;
+     max-width:1400px;
+ }
+ .advert-modal img{
+     margin: 30px;
+     height: 280px;
+     width: 280px;
+     border: 1px solid black;
+ }
+ .advert-modal p{
+     position:absolute;
+ }
+ #modal-itemName{
+     left:375px;
+     top:50px;
+     font-size:2rem;
+     font-weight:bold;
+ }
+ #modal-itemPrice{
+     top:90px;
+     left:375px;
+     font-size:20px;
+     font-weight:bold;
+ }
+ #modal-itemDescription{
+     top:350px;
+     right:40px;
+     height:360px;
+     width:80%;
+     padding:10px;
+     border: 2px solid black;
+ }
+ .advert-modal-background{
+     position:fixed;
+     height:100%;
+     width:100%;
+     top:0;
+     background-color:lightgrey;
+     opacity: 80%;
+     display:none;
+ }
+ .btn-add-advert{
+     height: 2rem;
+     width: 8rem;
+     right:120px;
+     border: 1px solid black;
+ }
+ .btn-add-advert a{
+     text-decoration: none;
+     color:black;
+ }
+ 
+/*Style for AddAdvert modal*/
+.add-advert-screen{
+    position:fixed;
+    height:100%;
+    width:100%;
+    top:0;
+    left:0;
+}
+
+.add-advert-modal{
+    position:fixed;
+    margin-top:5%;
+    height:80%;
+    width:90%;
+    background-color:white;
+    border:2px solid black;
+    border-radius:24px;
+    max-width:1400px;
+    left:15%;
+    z-index:1;
+}
+.add-advert-modal img{
+    margin: 30px;
+    height: 280px;
+    width: 280px;
+    border: 1px solid black;
+}
+.add-advert-modal input{
+    position:absolute;
+}
+.add-advert-modal textarea{
+    position:absolute;
+}
+#add-advert-name{
+    left:375px;
+    top:50px;
+    font-size:2rem;
+    font-weight:bold;
+}
+#add-advert-price{
+    top:110px;
+    left:375px;
+    font-size:20px;
+    font-weight:bold;
+}
+#add-advert-description{
+    top:350px;
+    right:40px;
+    height:360px;
+    width:75%;
+    padding:10px;
+    border: 2px solid black;
+    max-width:1000px;
+}
+#btn-confirm-advert{
+    height: 2rem;
+    width: 8rem;
+    left:30px;
+    bottom:45px;
+    border: 1px solid black;
+}
+.add-advert-modal-background{
+    position:fixed;
+    height:100%;
+    width:100%;
+    top:0;
+    background-color:lightgrey;
+    opacity: 80%;
+}
+.add-advert-modal-background a{
+    position:absolute;
+    height:100%;
+    width:100%;
+    cursor:default;
+}

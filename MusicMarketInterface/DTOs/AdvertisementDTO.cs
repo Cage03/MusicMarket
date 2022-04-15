@@ -2,9 +2,8 @@ namespace MusicMarketInterface.DTOs;
 
 public class AdvertisementDto
 {
-    public int PersonId { get; set; } //todo Test private setter?
-    
-    public DateTime Date { get; set; }
-    
-    public string Name { get; set; }
+    public string Name { get; set; } //TODO test private setter
+    public string Description { get; set; }
+    public double Price { get; set; }
+    public string Status { get; set; }
 }

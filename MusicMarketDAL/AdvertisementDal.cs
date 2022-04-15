@@ -5,30 +5,32 @@ using MusicMarketInterface.Interfaces;
 
 namespace MusicMarketDAL;
 
-public class AdvertisementDal: IAdvertisement
+public class AdvertisementDal : IAdvertisement
 {
-    private const string ConnectionString = "Server=mssqlstud.fhict.local;Database=dbi480282;User Id=dbi480282;Password=01ZX09cv!";
+    private const string ConnectionString =
+        "Server=mssqlstud.fhict.local;Database=dbi480282;User Id=dbi480282;Password=01ZX09cv!";
 
     //Server=localhost\SQLEXPRESS;Database=master;Trusted_Connection=True;
 
-    public int AddAdvertisement(AdvertisementDto advertisementDto)
+    public void AddAdvertisement(AdvertisementDto advertisementDto)
     {
         using var connection = new SqlConnection(ConnectionString);
         connection.Open();
 
-        const string sql = "INSERT INTO advertisement(Date, Name) " +
-                           "VALUES(@date, @name)";
-        var rowsAffected = 0;
+        const string sql = "INSERT INTO advertisement(Price, Name, Description) " +
+                           "VALUES(@price, @name, @description)";
+        var rowsAffected = 0; //used later when void = int
         using (var cmd = new SqlCommand(sql, connection))
         {
-            cmd.Parameters.AddWithValue("@date", advertisementDto.Date);
             cmd.Parameters.AddWithValue("@name", advertisementDto.Name);
+            cmd.Parameters.AddWithValue("@price", advertisementDto.Price);
+            cmd.Parameters.AddWithValue("@description", advertisementDto.Description);
             rowsAffected = cmd.ExecuteNonQuery();
         }
-        connection.Close();
 
-        return rowsAffected;
+        connection.Close();
     }
+
     
     public int RemoveAdvertisement(AdvertisementDto advertisementDto)
     {
@@ -44,8 +46,34 @@ public class AdvertisementDal: IAdvertisement
             cmd.Parameters.AddWithValue("@name", advertisementDto.Name); //todo should be by FK instead
             rowsAffected = cmd.ExecuteNonQuery();
         }
+
         connection.Close();
 
         return rowsAffected;
     }
+
+    public List<AdvertisementDto> GetAllAds()
+    {
+        using var connection = new SqlConnection(ConnectionString);
+        connection.Open();
+
+        var sql = new SqlCommand("SELECT * FROM advertisement", connection);
+        var reader = sql.ExecuteReader();
+
+        List<AdvertisementDto> result = new();
+        while (reader.Read())
+        {
+            result.Add(new AdvertisementDto()
+            {
+                Description = (string) reader["Description"],
+                Name = (string) reader["Name"],
+                Price = (double) reader["Price"],
+                Status = (string) reader["Status"]
+            });
+        }
+        connection.Close();
+        return result;
+    }
 }
+
+
