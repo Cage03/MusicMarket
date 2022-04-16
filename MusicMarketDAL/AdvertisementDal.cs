@@ -1,5 +1,4 @@
 using System.Data.SqlClient;
-using MusicMarketInterface;
 using MusicMarketInterface.DTOs;
 using MusicMarketInterface.Interfaces;
 
@@ -19,7 +18,7 @@ public class AdvertisementDal : IAdvertisement
 
         const string sql = "INSERT INTO advertisement(Price, Name, Description) " +
                            "VALUES(@price, @name, @description)";
-        var rowsAffected = 0; //used later when void = int
+        var rowsAffected = 0; //TODO used later when void = int
         using (var cmd = new SqlCommand(sql, connection))
         {
             cmd.Parameters.AddWithValue("@name", advertisementDto.Name);

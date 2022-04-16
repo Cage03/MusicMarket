@@ -2,10 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using MusicMarket.Models;
 using MusicMarketInterface.DTOs;
-using MusicMarketInterface.Interfaces;
 using MusicMarketLogic.Classes;
-using MusicMarketLogic.Containers;
-using MusicMarketLogic.Helpers;
 using MusicMarketLogic.Interfaces;
 
 namespace MusicMarket.Controllers;

@@ -1,8 +1,6 @@
-using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using MusicMarketDAL;
 using MusicMarketInterface.DTOs;
-using MusicMarketLogic.Classes;
 
 namespace MusicMarketUnitTests.DalTests;
 

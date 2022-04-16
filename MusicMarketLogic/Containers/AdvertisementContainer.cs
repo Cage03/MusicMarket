@@ -1,4 +1,3 @@
-using MusicMarketInterface.DTOs;
 using MusicMarketInterface.Interfaces;
 using MusicMarketLogic.Classes;
 using MusicMarketLogic.Interfaces;

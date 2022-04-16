@@ -18,11 +18,8 @@
         
         <div class="add-advert-modal">
             @Html.TextBoxFor(model => model.Name, new{id="add-advert-name", placeholder="Insert Name..."})
-            @* <input type="text" placeholder="Insert Name..." id="add-advert-name"> *@
             @Html.TextBoxFor(model => model.Price, new{id="add-advert-price", placeholder="Insert Price..."})
-            @* <input type="text" placeholder="Insert Price..." id="add-advert-price"> *@
             @Html.TextAreaFor(model => model.Description, new{id="add-advert-description", placeholder="Insert Description..."})
-            @* <textarea placeholder="Insert Description" id="add-advert-description"></textarea> *@
             <img src="~/images/search_icon.png" alt="search-icon"> @*Will be of use later*@
             <button type="submit" id="btn-confirm-advert" class="standard-btn btn-active">Confirm</button>
         </div>
