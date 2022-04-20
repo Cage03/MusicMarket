@@ -9,7 +9,7 @@ public class AdvertisementDal : IAdvertisement
     private const string ConnectionString =
         "Server=mssqlstud.fhict.local;Database=dbi480282;User Id=dbi480282;Password=01ZX09cv!";
 
-    //Server=localhost\SQLEXPRESS;Database=master;Trusted_Connection=True;
+    //Server=localhost\SQLEXPRESS;Database=master;Trusted_Connection=True; //local db
 
     public void AddAdvertisement(AdvertisementDto advertisementDto)
     {

@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using MusicMarket.Models;
 using MusicMarketInterface.DTOs;
 using MusicMarketLogic.Classes;
+using MusicMarketLogic.Helpers;
 using MusicMarketLogic.Interfaces;
 
 namespace MusicMarket.Controllers;
@@ -26,19 +27,19 @@ public class HomeController : Controller
     public IActionResult Market()
     {
         var marketViewModel = new MarketViewModel();
-        marketViewModel.Advertisements = IAdvertisementContainer.GetAllAds();
+        marketViewModel.Advertisements = Toolbox.AdvertisementContainer.GetAllAds();
         return View(marketViewModel);
     }
 
     [HttpPost]
     public IActionResult Market(Advertisement advertisement)
     {
-        IAdvertisementContainer.AddAdvertisement(advertisement);
+        Toolbox.AdvertisementContainer.AddAdvertisement(advertisement);
         return View();
     }
     public IActionResult AddAdvert(MarketAdModel model)
     {
-        IAdvertisementContainer.AddAdvertisement(new Advertisement(new AdvertisementDto())
+        Toolbox.AdvertisementContainer.AddAdvertisement(new Advertisement(new AdvertisementDto())
         {
             Name = model.Name,
             Description = model.Description,
@@ -61,7 +62,7 @@ public class HomeController : Controller
     [HttpPost]
     public IActionResult AddAdvertisement(Advertisement advertisement)
     {
-        IAdvertisementContainer.AddAdvertisement(advertisement);
+       Toolbox.AdvertisementContainer.AddAdvertisement(advertisement);
         return View();
     }
 

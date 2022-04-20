@@ -14,7 +14,6 @@
     @using (Html.BeginForm()){
         
         @Html.AntiForgeryToken()
-        @Html.ValidationSummary("The following errors were found:", new {@class = "alert alert-danger"})
         
         <div class="add-advert-modal">
             @Html.TextBoxFor(model => model.Name, new{id="add-advert-name", placeholder="Insert Name..."})
