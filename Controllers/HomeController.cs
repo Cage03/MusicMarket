@@ -38,16 +38,17 @@ public class HomeController : Controller
         ContainerFactory.AdvertisementContainer.AddAdvertisement(advertisement);
         return View();
     }
+    [HttpPost]
     public IActionResult AddAdvert(MarketAdModel model)
     {
-        ContainerFactory.AdvertisementContainer.AddAdvertisement(new Advertisement(new AdvertisementDto())
+        ContainerFactory.AdvertisementContainer.AddAdvertisement(new Advertisement()
         {
             Name = model.Name,
             Description = model.Description,
             Price = model.Price,
             Status =model.Status
         });
-        return RedirectToAction("AddAdvert", "Home");
+        return RedirectToAction("Market", "Home");
     }
     
     public IActionResult Messages()
@@ -61,9 +62,15 @@ public class HomeController : Controller
     }
 
     [HttpPost]
-    public IActionResult AddAdvertisement(Advertisement advertisement)
+    public IActionResult AddAdvertisement(MarketAdModel marketAdModel)
     {
-       ContainerFactory.AdvertisementContainer.AddAdvertisement(advertisement);
+       ContainerFactory.AdvertisementContainer.AddAdvertisement(new Advertisement()
+       {
+           Description = marketAdModel.Description,
+           Name = marketAdModel.Name,
+           Price = marketAdModel.Price,
+           Status = marketAdModel.Status
+       });
         return View();
     }
 
