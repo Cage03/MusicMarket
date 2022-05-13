@@ -19,18 +19,28 @@ public class AdvertisementDal : IAdvertisement
         const string sql = "INSERT INTO advertisement(Price, Name, Description) " +
                            "VALUES(@price, @name, @description)";
         var rowsAffected = 0; //TODO used later when void = int
-        using (var cmd = new SqlCommand(sql, connection))
+        try
         {
-            cmd.Parameters.AddWithValue("@name", advertisementDto.Name);
-            cmd.Parameters.AddWithValue("@price", advertisementDto.Price);
-            cmd.Parameters.AddWithValue("@description", advertisementDto.Description);
-            rowsAffected = cmd.ExecuteNonQuery();
+            using (var cmd = new SqlCommand(sql, connection))
+            {
+                cmd.Parameters.AddWithValue("@name", advertisementDto.Name);
+                cmd.Parameters.AddWithValue("@price", advertisementDto.Price);
+                cmd.Parameters.AddWithValue("@description", advertisementDto.Description);
+                rowsAffected = cmd.ExecuteNonQuery();
+            }
         }
-
-        connection.Close();
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex.Message);
+            throw new ArgumentException(ex.Message);
+        }
+        finally
+        {
+            connection.Close();
+        }
     }
 
-    
+
     public int RemoveAdvertisement(AdvertisementDto advertisementDto)
     {
         //Give success bool?
@@ -40,13 +50,23 @@ public class AdvertisementDal : IAdvertisement
         const string sql = "DELETE FROM advertisement " +
                            "WHERE(Name = @name)";
         var rowsAffected = 0;
-        using (var cmd = new SqlCommand(sql, connection))
+        try
         {
-            cmd.Parameters.AddWithValue("@name", advertisementDto.Name); //todo should be by FK instead
-            rowsAffected = cmd.ExecuteNonQuery();
+            using (var cmd = new SqlCommand(sql, connection))
+            {
+                cmd.Parameters.AddWithValue("@name", advertisementDto.Name); //todo should be by FK instead
+                rowsAffected = cmd.ExecuteNonQuery();
+            }
         }
-
-        connection.Close();
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex.Message);
+            throw new ArgumentException(ex.Message);
+        }
+        finally
+        {
+            connection.Close();
+        }
 
         return rowsAffected;
     }
@@ -60,19 +80,29 @@ public class AdvertisementDal : IAdvertisement
         var reader = sql.ExecuteReader();
 
         List<AdvertisementDto> result = new();
-        while (reader.Read())
+        try
         {
-            result.Add(new AdvertisementDto()
+            while (reader.Read())
             {
-                Description = (string) reader["Description"],
-                Name = (string) reader["Name"],
-                Price = (double) reader["Price"],
-                Status = (string) reader["Status"]
-            });
+                result.Add(new AdvertisementDto()
+                {
+                    Description = (string) reader["Description"],
+                    Name = (string) reader["Name"],
+                    Price = (double) reader["Price"],
+                    Status = (string) reader["Status"]
+                });
+            }
         }
-        connection.Close();
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex.Message);
+            throw new ArgumentException(ex.Message);
+        }
+        finally
+        {
+            connection.Close();
+        }
+
         return result;
     }
 }
-
-

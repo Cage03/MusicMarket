@@ -7,4 +7,6 @@ public interface IMessage
     int AddMessage(MessageDto messageDto);
 
     int RemoveMessage(MessageDto messageDto);
+
+    List<MessageDto> GetConversation(MessageDto messageDto);
 }

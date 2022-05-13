@@ -19,6 +19,9 @@ public class AdvertisementTest
         //act
         var advertisement = new Advertisement(name, description, price, status);
         //assert
-        Assert.IsTrue(advertisement.Name==name && advertisement.Description==description && Math.Abs(advertisement.Price - price) < 0 && advertisement.Status==status);
+        Assert.AreEqual(name, advertisement.Name);
+        Assert.AreEqual(description, advertisement.Description);
+        Assert.AreEqual(price, advertisement.Price);
+        Assert.AreEqual(status, advertisement.Status);
     }
 }

@@ -9,7 +9,7 @@ public class MarketViewModel
 {
     public List<Advertisement> Advertisements = new();
 
-    
+    public List<Auction> Auctions = new();
     // public List<MarketAdModel> AdModels = new();
 
     // public void GetAdModels()

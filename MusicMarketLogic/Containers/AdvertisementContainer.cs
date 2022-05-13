@@ -13,10 +13,6 @@ public class AdvertisementContainer : IAdvertisementContainer
     public AdvertisementContainer(IAdvertisement iAdvertisement)
     {
         Advertisement = iAdvertisement;
-    }
-    
-    public AdvertisementContainer()
-    {
         _advertisements = new List<Advertisement>();
     }
     
@@ -27,17 +23,17 @@ public class AdvertisementContainer : IAdvertisementContainer
 
     public void AddAdvertisement(Advertisement advertisement)
     {
-        // if (_advertisements.Contains(advertisement)) //URGENT Add exceptions
-        // {
-        //     throw new ArgumentException("Cannot add duplicate advertisement");
-        // }
-        //
-        // if (string.IsNullOrWhiteSpace(advertisement.Name) || advertisement.Price==0)
-        // {
-        //     throw new ArgumentException("Not all information is given");
-        // }
+        if (_advertisements.Contains(advertisement))
+        {
+            throw new ArgumentException("Cannot add duplicate advertisement");
+        }
+        
+        if (string.IsNullOrWhiteSpace(advertisement.Name) || advertisement.Price==0)
+        {
+            throw new ArgumentException("Not all information is given");
+        }
         Advertisement.AddAdvertisement(advertisement.ToDto());
-        // _advertisements.Add(advertisement); //TODO use later
+        _advertisements.Add(advertisement);
     }
 
     public void RemoveAdvertisement(Advertisement advertisement)
@@ -47,7 +43,7 @@ public class AdvertisementContainer : IAdvertisementContainer
             throw new ArgumentException("Cannot remove non-contained advertisement");
         }
         _advertisements.Remove(advertisement);
-        
+        Advertisement.RemoveAdvertisement(advertisement.ToDto());
     }
 
     public List<Advertisement> GetAllAds()
@@ -60,6 +56,4 @@ public class AdvertisementContainer : IAdvertisementContainer
             }
             return adverts;
     }
-
-    
 }

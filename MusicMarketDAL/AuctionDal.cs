@@ -6,8 +6,9 @@ namespace MusicMarketDAL;
 
 public class AuctionDal : IAuction
 {
-    private const string ConnectionString = "Server=mssqlstud.fhict.local;Database=dbi480282;User Id=dbi480282;Password=01ZX09cv!";
-    
+    private const string ConnectionString =
+        "Server=mssqlstud.fhict.local;Database=dbi480282;User Id=dbi480282;Password=01ZX09cv!";
+
     public int AddAuction(AuctionDto auctionDto)
     {
         using var connection = new SqlConnection(ConnectionString);
@@ -16,13 +17,24 @@ public class AuctionDal : IAuction
         const string sql = "INSERT INTO auction(Name, Date) " +
                            "VALUES(@name, @date)";
         var rowsAffected = 0;
-        using (var cmd = new SqlCommand(sql, connection))
+        try
         {
-            cmd.Parameters.AddWithValue("@date", auctionDto.Date);
-            cmd.Parameters.AddWithValue("@name", auctionDto.Name);
-            rowsAffected = cmd.ExecuteNonQuery();
+            using (var cmd = new SqlCommand(sql, connection))
+            {
+                cmd.Parameters.AddWithValue("@date", auctionDto.Date);
+                cmd.Parameters.AddWithValue("@name", auctionDto.Name);
+                rowsAffected = cmd.ExecuteNonQuery();
+            }
         }
-        connection.Close();
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex.Message);
+            throw new ArgumentException(ex.Message);
+        }
+        finally
+        {
+            connection.Close();
+        }
 
         return rowsAffected;
     }
@@ -35,12 +47,88 @@ public class AuctionDal : IAuction
         const string sql = "DELETE FROM auction " +
                            "WHERE(Name = @name)";
         var rowsAffected = 0;
-        using (var cmd = new SqlCommand(sql, connection))
+        try
         {
-            cmd.Parameters.AddWithValue("@name", auctionDto.Name); //todo should be by FK instead
-            rowsAffected = cmd.ExecuteNonQuery();
+            using (var cmd = new SqlCommand(sql, connection))
+            {
+                cmd.Parameters.AddWithValue("@name", auctionDto.Name); //todo should be by FK instead
+                rowsAffected = cmd.ExecuteNonQuery();
+            }
         }
-        connection.Close();
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex.Message);
+            throw new ArgumentException(ex.Message);
+        }
+        finally
+        {
+            connection.Close();
+        }
+
+        return rowsAffected;
+    }
+
+    public List<AuctionDto> GetAllAuctions()
+    {
+        using var connection = new SqlConnection(ConnectionString);
+        connection.Open();
+
+        var sql = new SqlCommand("SELECT * FROM auction", connection);
+        var reader = sql.ExecuteReader();
+
+        List<AuctionDto> result = new();
+        try
+        {
+            while (reader.Read())
+            {
+                result.Add(new AuctionDto()
+                {
+                    Date = (DateTime) reader["Date"],
+                    Name = (string) reader["Name"],
+                    PersonId = (int) reader["PersonId"],
+                    CurrentPrice = (double) reader["CurrentPrice"]
+                });
+            }
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex.Message);
+            throw new ArgumentException(ex.Message);
+        }
+        finally
+        {
+            connection.Close();
+        }
+
+        return result;
+    }
+
+    public int UpdateCurrentPrice(AuctionDto auctionDto)
+    {
+        using var connection = new SqlConnection(ConnectionString);
+        connection.Open();
+        
+
+        const string sql = "UPDATE [auction]" +
+                           "SET [CurrentPrice] = @CurrentPrice";
+        var rowsAffected = 0;
+        try
+        {
+            using (var cmd = new SqlCommand(sql, connection))
+            {
+                cmd.Parameters.AddWithValue("@CurrentPrice", auctionDto.CurrentPrice);
+                rowsAffected = cmd.ExecuteNonQuery();
+            }
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex.Message);
+            throw new ArgumentException(ex.Message);
+        }
+        finally
+        {
+            connection.Close();
+        }
 
         return rowsAffected;
     }

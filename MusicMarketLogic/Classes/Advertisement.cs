@@ -8,7 +8,7 @@ public class Advertisement
     public string Description { get; set; }
     public double Price { get; set; }
     public string Status { get; set; }
-    
+
     public Advertisement(string name, string description, double price, string status)
     {
         Name = name;
@@ -27,23 +27,22 @@ public class Advertisement
 
     public Advertisement()
     {
-        
     }
-    
+
     public void SetName(string name)
     {
         Name = name;
     }
-    
+
     public AdvertisementDto ToDto()
     {
-        AdvertisementDto dto = new();
-        
-        //TODO see if there is a better way V
-        dto.Name = Name;
-        dto.Description = Description;
-        dto.Price = Price;
-        dto.Status = Status;
+        AdvertisementDto dto = new()
+        {
+            Name = Name,
+            Description = Description,
+            Price = Price,
+            Status = Status
+        };
 
         return dto;
     }

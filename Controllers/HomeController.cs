@@ -27,19 +27,20 @@ public class HomeController : Controller
     public IActionResult Market()
     {
         var marketViewModel = new MarketViewModel();
-        marketViewModel.Advertisements = Toolbox.AdvertisementContainer.GetAllAds();
+        marketViewModel.Advertisements = ContainerFactory.AdvertisementContainer.GetAllAds();
+        marketViewModel.Auctions = ContainerFactory.AuctionContainer.GetAllAuctions();
         return View(marketViewModel);
     }
 
     [HttpPost]
     public IActionResult Market(Advertisement advertisement)
     {
-        Toolbox.AdvertisementContainer.AddAdvertisement(advertisement);
+        ContainerFactory.AdvertisementContainer.AddAdvertisement(advertisement);
         return View();
     }
     public IActionResult AddAdvert(MarketAdModel model)
     {
-        Toolbox.AdvertisementContainer.AddAdvertisement(new Advertisement(new AdvertisementDto())
+        ContainerFactory.AdvertisementContainer.AddAdvertisement(new Advertisement(new AdvertisementDto())
         {
             Name = model.Name,
             Description = model.Description,
@@ -62,7 +63,7 @@ public class HomeController : Controller
     [HttpPost]
     public IActionResult AddAdvertisement(Advertisement advertisement)
     {
-       Toolbox.AdvertisementContainer.AddAdvertisement(advertisement);
+       ContainerFactory.AdvertisementContainer.AddAdvertisement(advertisement);
         return View();
     }
 

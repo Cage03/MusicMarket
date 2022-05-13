@@ -1,5 +1,49 @@
 ﻿<wpf:ResourceDictionary xml:space="preserve" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:ss="urn:shemas-jetbrains-com:settings-storage-xaml" xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=39571eee_002Dc69c_002D4dbd_002D9a59_002D73c304482cca/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="AddAdvertisementTest #2" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+  &lt;TestAncestor&gt;&#xD;
+    &lt;TestId&gt;MSTest::C13D6A6B-9A66-4E8E-A673-AB2BBA43BA7E::net6.0::MusicMarketUnitTests.ContainerTests.AdvertisementContainerTest.AddAdvertisementTest&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;MSTest::C13D6A6B-9A66-4E8E-A673-AB2BBA43BA7E::net6.0::MusicMarketUnitTests.ContainerTests.AdvertisementContainerTest.ConstructorTest&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;MSTest::C13D6A6B-9A66-4E8E-A673-AB2BBA43BA7E::net6.0::MusicMarketUnitTests.ContainerTests.AdvertisementContainerTest.RemoveAdvertisementTest&lt;/TestId&gt;&#xD;
+  &lt;/TestAncestor&gt;&#xD;
+&lt;/SessionState&gt;</s:String>
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=4cc87e84_002D3b45_002D4cb0_002Dae50_002Dddb2cc2da2b0/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="AddAdvertisementTest" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+  &lt;TestAncestor&gt;&#xD;
+    &lt;TestId&gt;MSTest::C13D6A6B-9A66-4E8E-A673-AB2BBA43BA7E::net6.0::MusicMarketUnitTests.ContainerTests.AdvertisementContainerTest.AddAdvertisementTest&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;MSTest::C13D6A6B-9A66-4E8E-A673-AB2BBA43BA7E::net6.0::MusicMarketUnitTests.ContainerTests.AdvertisementContainerTest.ConstructorTest&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;MSTest::C13D6A6B-9A66-4E8E-A673-AB2BBA43BA7E::net6.0::MusicMarketUnitTests.ContainerTests.AdvertisementContainerTest.RemoveAdvertisementTest&lt;/TestId&gt;&#xD;
+  &lt;/TestAncestor&gt;&#xD;
+&lt;/SessionState&gt;</s:String>
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=505643d3_002D994d_002D4113_002D895e_002D44f40f002c5a/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="UpdateCurrentPriceTest" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+  &lt;TestAncestor&gt;&#xD;
+    &lt;TestId&gt;MSTest::C13D6A6B-9A66-4E8E-A673-AB2BBA43BA7E::net6.0::MusicMarketUnitTests.ContainerTests.AuctionContainerTest&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;MSTest::C13D6A6B-9A66-4E8E-A673-AB2BBA43BA7E::net6.0::MusicMarketUnitTests.ContainerTests.AdvertisementContainerTest.RemoveNonContainedAdvertisementTest&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;MSTest::C13D6A6B-9A66-4E8E-A673-AB2BBA43BA7E::net6.0::MusicMarketUnitTests.ContainerTests.AdvertisementContainerTest.RemoveAdvertisementTest&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;MSTest::C13D6A6B-9A66-4E8E-A673-AB2BBA43BA7E::net6.0::MusicMarketUnitTests.ContainerTests.AdvertisementContainerTest&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;MSTest::C13D6A6B-9A66-4E8E-A673-AB2BBA43BA7E::net6.0::MusicMarketUnitTests.ContainerTests.MessageContainerTest.AddMessageTest&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;MSTest::C13D6A6B-9A66-4E8E-A673-AB2BBA43BA7E::net6.0::MusicMarketUnitTests.ContainerTests.MessageContainerTest&lt;/TestId&gt;&#xD;
+  &lt;/TestAncestor&gt;&#xD;
+&lt;/SessionState&gt;</s:String>
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=605f081e_002D45e3_002D4366_002D8ffb_002D3194e8db10a2/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="RemoveAdvertisementTest" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+  &lt;TestAncestor&gt;&#xD;
+    &lt;TestId&gt;MSTest::C13D6A6B-9A66-4E8E-A673-AB2BBA43BA7E::net6.0::MusicMarketUnitTests.ContainerTests.AdvertisementContainerTest.RemoveAdvertisementTest&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;MSTest::C13D6A6B-9A66-4E8E-A673-AB2BBA43BA7E::net6.0::MusicMarketUnitTests.ContainerTests.AuctionContainerTest.AddAuctionTest&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;MSTest::C13D6A6B-9A66-4E8E-A673-AB2BBA43BA7E::net6.0::MusicMarketUnitTests.ContainerTests.AdvertisementContainerTest.AddAdvertisementTest&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;MSTest::C13D6A6B-9A66-4E8E-A673-AB2BBA43BA7E::net6.0::MusicMarketUnitTests.ContainerTests.AdvertisementContainerTest.GetAllTest&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;MSTest::C13D6A6B-9A66-4E8E-A673-AB2BBA43BA7E::net6.0::MusicMarketUnitTests.ContainerTests.AdvertisementContainerTest&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;MSTest::C13D6A6B-9A66-4E8E-A673-AB2BBA43BA7E::net6.0::MusicMarketUnitTests.ContainerTests.AuctionContainerTest.GetAllTest&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;MSTest::C13D6A6B-9A66-4E8E-A673-AB2BBA43BA7E::net6.0::MusicMarketUnitTests.ContainerTests.AuctionContainerTest.UpdateCurrentPriceTest&lt;/TestId&gt;&#xD;
+  &lt;/TestAncestor&gt;&#xD;
+&lt;/SessionState&gt;</s:String>
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=751b3c83_002D7a66_002D4e9a_002Da015_002Da9c5fad437b8/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="GetConversationTest" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+  &lt;TestAncestor&gt;&#xD;
+    &lt;TestId&gt;MSTest::C13D6A6B-9A66-4E8E-A673-AB2BBA43BA7E::net6.0::MusicMarketUnitTests.ContainerTests.MessageContainerTest&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;MSTest::C13D6A6B-9A66-4E8E-A673-AB2BBA43BA7E::net6.0::MusicMarketUnitTests.ContainerTests.AdvertisementContainerTest.AddAdvertisementTest&lt;/TestId&gt;&#xD;
+  &lt;/TestAncestor&gt;&#xD;
+&lt;/SessionState&gt;</s:String>
 	
-	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=c43175d7_002D1b8c_002D4bb8_002Db4e4_002Dc1e2158d5582/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="UnitTest1" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=c43175d7_002D1b8c_002D4bb8_002Db4e4_002Dc1e2158d5582/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="UnitTest1" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+  &lt;Project Location="C:\Users\stijn\RiderProjects\MusicMarket\MusicMarketUnitTests" Presentation="&amp;lt;MusicMarketUnitTests&amp;gt;" /&gt;&#xD;
+&lt;/SessionState&gt;</s:String>
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=c5c4d1f4_002D12a6_002D4932_002D8fb7_002D7e0116e758aa/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="GetConversationTest #2" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
   &lt;Project Location="C:\Users\stijn\RiderProjects\MusicMarket\MusicMarketUnitTests" Presentation="&amp;lt;MusicMarketUnitTests&amp;gt;" /&gt;&#xD;
 &lt;/SessionState&gt;</s:String></wpf:ResourceDictionary>

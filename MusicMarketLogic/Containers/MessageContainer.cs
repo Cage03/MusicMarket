@@ -1,3 +1,5 @@
+using MusicMarketInterface.DTOs;
+using MusicMarketInterface.Interfaces;
 using MusicMarketLogic.Classes;
 
 namespace MusicMarketLogic.Containers;
@@ -6,8 +8,11 @@ public class MessageContainer
 {
     private List<Message> _messages;
 
-    public MessageContainer()
+    private IMessage Message;
+
+    public MessageContainer(IMessage iMessage)
     {
+        Message = iMessage;
         _messages = new List<Message>();
     }
 
@@ -28,6 +33,7 @@ public class MessageContainer
             throw new ArgumentException("Not all information is given");
         }
         _messages.Add(message);
+        Message.AddMessage(message.toDto());
     }
 
     public void RemoveMessage(Message message)
@@ -37,5 +43,18 @@ public class MessageContainer
             throw new ArgumentException("Cannot remove non-contained message");
         }
         _messages.Remove(message);
+        Message.RemoveMessage(message.toDto());
+    }
+
+    public List<Message> GetConversation(Message message)
+    {
+        var messageDtos = Message.GetConversation(message.toDto());
+        List<Message> messages = new();
+        foreach (var messageDto in messageDtos)
+        {
+            messages.Add(new Message(messageDto));
+        }
+
+        return messages;
     }
 }
