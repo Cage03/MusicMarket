@@ -4,6 +4,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using MusicMarketLogic.Classes;
 using MusicMarketLogic.Containers;
 using MusicMarketUnitTests.Stubs;
+using Newtonsoft.Json.Linq;
 
 namespace MusicMarketUnitTests.ContainerTests;
 
@@ -30,13 +31,14 @@ public class AdvertisementContainerTest
         var advertisement = new Advertisement("TestName", "TestDescription", 19, "Active");
         //act
         container.AddAdvertisement(advertisement);
+        var containerAdvert = new JObject();
+        var dalAdvert = new JObject();
+        containerAdvert["Advert"] = JToken.FromObject(advertisement);
+        dalAdvert["Advert"] = JToken.FromObject(dal.AdvertisementDtos[^1]);
         //assert
         // Assert.IsTrue(dal.AdvertisementDtos.Contains(advertisement.ToDto()),
         //     "List of AdvertisementDtos does not contain advertisement"); //Reminder, < this for some reason doesn't work.
-        Assert.AreEqual(dal.AdvertisementDtos[^1].Name, advertisement.Name);
-        Assert.AreEqual(dal.AdvertisementDtos[^1].Description, advertisement.Description);
-        Assert.AreEqual(dal.AdvertisementDtos[^1].Price, advertisement.Price);
-        Assert.AreEqual(dal.AdvertisementDtos[^1].Status, advertisement.Status);
+        Assert.AreEqual(containerAdvert.ToString(), dalAdvert.ToString());
         Assert.IsTrue(container.GetAdvertisements().Contains(advertisement));
     }
 
