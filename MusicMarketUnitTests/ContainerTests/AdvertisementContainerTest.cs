@@ -3,7 +3,7 @@ using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using MusicMarketLogic.Classes;
 using MusicMarketLogic.Containers;
-using MusicMarketUnitTests.Stubs;
+using MusicMarketUnitTests.Mocks;
 using Newtonsoft.Json.Linq;
 
 namespace MusicMarketUnitTests.ContainerTests;
@@ -15,7 +15,7 @@ public class AdvertisementContainerTest
     public void ConstructorTest()
     {
         //arrange
-        AdvertisementScrub dal = new();
+        AdvertisementMock dal = new();
         //act
         var container = new AdvertisementContainer(dal);
         //assert
@@ -23,12 +23,12 @@ public class AdvertisementContainerTest
     }
 
     [TestMethod]
-    public void AddAdvertisementTest()
+    public void AddAdvertisementTest() //todo Icomparable?
     {
         //arrange
-        var dal = new AdvertisementScrub();
+        var dal = new AdvertisementMock();
         var container = new AdvertisementContainer(dal);
-        var advertisement = new Advertisement("TestName", "TestDescription", 19, "Active");
+        var advertisement = new Advertisement("TestName", "TestDescription", 19, "Active", 109);
         //act
         container.AddAdvertisement(advertisement);
         var containerAdvert = new JObject();
@@ -47,9 +47,9 @@ public class AdvertisementContainerTest
     public void AddAlreadyContainedAdTest()
     {
         //arrange
-        AdvertisementScrub dal = new();
+        AdvertisementMock dal = new();
         var container = new AdvertisementContainer(dal);
-        var advertisement = new Advertisement("testName", "testDescription", 5.02, "true");
+        var advertisement = new Advertisement("testName", "testDescription", 5.02, "true", 81);
         container.AddAdvertisement(advertisement);
         //act
         container.AddAdvertisement(advertisement);
@@ -62,9 +62,9 @@ public class AdvertisementContainerTest
     public void AddEmptyValueAdvertTest()
     {
         //arrange
-        AdvertisementScrub dal = new();
+        AdvertisementMock dal = new();
         var container = new AdvertisementContainer(dal);
-        var advertisement = new Advertisement("", "testDescription", 5.01, "true");
+        var advertisement = new Advertisement("", "testDescription", 5.01, "true", 10);
         //act
         container.AddAdvertisement(advertisement);
         //assert
@@ -76,9 +76,9 @@ public class AdvertisementContainerTest
     public void RemoveAdvertisementTest()
     {
         //arrange
-        var dal = new AdvertisementScrub();
+        var dal = new AdvertisementMock();
         var container = new AdvertisementContainer(dal);
-        var advertisement = new Advertisement("testName", "testDescription", 5, "true");
+        var advertisement = new Advertisement("testName", "testDescription", 5, "true", 19);
         container.AddAdvertisement(advertisement);
         //act
         container.RemoveAdvertisement(advertisement);
@@ -92,9 +92,9 @@ public class AdvertisementContainerTest
     public void RemoveNonContainedAdvertisementTest()
     {
         //arrange
-        AdvertisementScrub dal = new();
+        AdvertisementMock dal = new();
         var container = new AdvertisementContainer(dal);
-        var advertisement = new Advertisement("testName", "testDescription", 5.01, "true");
+        var advertisement = new Advertisement("testName", "testDescription", 5.01, "true", 99);
         //act
         container.RemoveAdvertisement(advertisement);
         //assert
@@ -106,7 +106,7 @@ public class AdvertisementContainerTest
     public void GetAllTest()
     {
         //arrange
-        var dal = new AdvertisementScrub();
+        var dal = new AdvertisementMock();
         var container = new AdvertisementContainer(dal);
         //act
         var advertList = container.GetAllAds();

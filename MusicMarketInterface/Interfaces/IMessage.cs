@@ -8,5 +8,7 @@ public interface IMessage
 
     int RemoveMessage(MessageDto messageDto);
 
-    List<MessageDto> GetConversation(MessageDto messageDto);
+    List<MessageDto> GetConversation(int senderId, int receiverId);
+
+    List<MessageDto> GetAllConversations();
 }

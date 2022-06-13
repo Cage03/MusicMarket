@@ -1,9 +1,19 @@
+@model MessageViewModel
 @{
     ViewData["Title"] = "Messages";
     Layout = "_layout";
 }
 <body>
 <div class="message-screen">
-    
-</div>
+@if (Model.Messages.Any())
+{
+    foreach (var message in Model.Messages)
+    {
+        <a asp-controller="Home" asp-action="Conversation" asp-route-senderId="@message.SenderId" asp-route-receiverId="@message.ReceiverId" class="conversation-container">
+            <p id="senderId">@message.SenderId</p>
+            <p id="receiverId">@message.ReceiverId</p>
+            </a>
+    }
+}
+ </div>
 </body>

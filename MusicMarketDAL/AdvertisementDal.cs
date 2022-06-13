@@ -48,13 +48,13 @@ public class AdvertisementDal : IAdvertisement
         connection.Open();
 
         const string sql = "DELETE FROM advertisement " +
-                           "WHERE(Name = @name)";
+                           "WHERE(Id = @Id)";
         var rowsAffected = 0;
         try
         {
             using (var cmd = new SqlCommand(sql, connection))
             {
-                cmd.Parameters.AddWithValue("@name", advertisementDto.Name); //todo should be by FK instead
+                cmd.Parameters.AddWithValue("@Id", advertisementDto.Id); //todo should be by FK instead
                 rowsAffected = cmd.ExecuteNonQuery();
             }
         }
@@ -89,7 +89,8 @@ public class AdvertisementDal : IAdvertisement
                     Description = (string) reader["Description"],
                     Name = (string) reader["Name"],
                     Price = (double) reader["Price"],
-                    Status = (string) reader["Status"]
+                    Status = (string) reader["Status"],
+                    Id = (int) reader["Id"]
                 });
             }
         }

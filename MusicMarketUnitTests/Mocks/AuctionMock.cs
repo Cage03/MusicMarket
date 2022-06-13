@@ -4,14 +4,14 @@ using MusicMarketDAL;
 using MusicMarketInterface.DTOs;
 using MusicMarketInterface.Interfaces;
 
-namespace MusicMarketUnitTests.Stubs;
+namespace MusicMarketUnitTests.Mocks;
 
-public class AuctionScrub : IAuction
+public class AuctionMock : IAuction
 {
 
     public List<AuctionDto> AuctionDtos = new();
     
-    public AuctionScrub()
+    public AuctionMock()
     {
         AuctionDtos.Add(new AuctionDto()
         {

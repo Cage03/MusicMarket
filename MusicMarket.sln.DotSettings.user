@@ -1,4 +1,5 @@
 ﻿<wpf:ResourceDictionary xml:space="preserve" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:ss="urn:shemas-jetbrains-com:settings-storage-xaml" xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+	<s:String x:Key="/Default/Environment/Highlighting/HighlightingSourceSnapshotLocation/@EntryValue">C:\Users\stijn\AppData\Local\JetBrains\Rider2021.3\resharper-host\temp\Rider\vAny\CoverageData\_MusicMarket.996448047\Snapshot\snapshot.utdcvr</s:String>
 	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=39571eee_002Dc69c_002D4dbd_002D9a59_002D73c304482cca/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="AddAdvertisementTest #2" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
   &lt;TestAncestor&gt;&#xD;
     &lt;TestId&gt;MSTest::C13D6A6B-9A66-4E8E-A673-AB2BBA43BA7E::net6.0::MusicMarketUnitTests.ContainerTests.AdvertisementContainerTest.AddAdvertisementTest&lt;/TestId&gt;&#xD;
@@ -34,8 +35,11 @@
     &lt;TestId&gt;MSTest::C13D6A6B-9A66-4E8E-A673-AB2BBA43BA7E::net6.0::MusicMarketUnitTests.ContainerTests.AuctionContainerTest.UpdateCurrentPriceTest&lt;/TestId&gt;&#xD;
   &lt;/TestAncestor&gt;&#xD;
 &lt;/SessionState&gt;</s:String>
-	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=751b3c83_002D7a66_002D4e9a_002Da015_002Da9c5fad437b8/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="GetConversationTest" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=751b3c83_002D7a66_002D4e9a_002Da015_002Da9c5fad437b8/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="GetConversationTest" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
   &lt;Project Location="C:\Users\stijn\RiderProjects\MusicMarket\MusicMarketUnitTests" Presentation="&amp;lt;MusicMarketUnitTests&amp;gt;" /&gt;&#xD;
+&lt;/SessionState&gt;</s:String>
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=b41d5d7e_002Df90d_002D4dd1_002Da386_002De97526283306/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="All tests from Solution" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+  &lt;Solution /&gt;&#xD;
 &lt;/SessionState&gt;</s:String>
 	
 	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=c43175d7_002D1b8c_002D4bb8_002Db4e4_002Dc1e2158d5582/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="UnitTest1" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;

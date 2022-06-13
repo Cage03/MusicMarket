@@ -46,9 +46,23 @@ public class MessageContainer
         Message.RemoveMessage(message.toDto());
     }
 
-    public List<Message> GetConversation(Message message)
+    public List<Message> GetAllConversations()
     {
-        var messageDtos = Message.GetConversation(message.toDto());
+        var messageDtos = Message.GetAllConversations();
+        _messages.Clear();
+        List<Message> messages = new();
+        foreach (var messageDto in messageDtos)
+        {
+            messages.Add(new Message(messageDto));
+            _messages.Add(new Message(messageDto));
+        }
+
+        return messages;
+    }
+
+    public List<Message> GetConversation(int senderId, int receiverId)
+    {
+        var messageDtos = Message.GetConversation(senderId, receiverId);
         List<Message> messages = new();
         foreach (var messageDto in messageDtos)
         {

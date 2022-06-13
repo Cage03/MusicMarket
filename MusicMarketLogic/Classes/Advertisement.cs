@@ -1,3 +1,4 @@
+using System.Data.Common;
 using MusicMarketInterface.DTOs;
 
 namespace MusicMarketLogic.Classes;
@@ -8,13 +9,16 @@ public class Advertisement
     public string Description { get; set; }
     public double Price { get; set; }
     public string Status { get; set; }
+    
+    public int Id { get; set; }
 
-    public Advertisement(string name, string description, double price, string status)
+    public Advertisement(string name, string description, double price, string status, int id)
     {
         Name = name;
         Description = description;
         Price = price;
         Status = status;
+        Id = id;
     }
 
     public Advertisement(AdvertisementDto advertisementDto)
@@ -23,6 +27,7 @@ public class Advertisement
         Description = advertisementDto.Description;
         Price = advertisementDto.Price;
         Status = advertisementDto.Status;
+        Id = advertisementDto.Id;
     }
 
     public Advertisement()
@@ -41,7 +46,8 @@ public class Advertisement
             Name = Name,
             Description = Description,
             Price = Price,
-            Status = Status
+            Status = Status,
+            Id = Id
         };
 
         return dto;

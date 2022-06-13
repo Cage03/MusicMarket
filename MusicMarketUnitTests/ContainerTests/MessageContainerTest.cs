@@ -3,7 +3,7 @@ using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using MusicMarketLogic.Classes;
 using MusicMarketLogic.Containers;
-using MusicMarketUnitTests.Stubs;
+using MusicMarketUnitTests.Mocks;
 
 namespace MusicMarketUnitTests.ContainerTests;
 
@@ -14,7 +14,7 @@ public class MessageContainerTest
     public void ConstructorTest()
     {
         //arrange
-        MessageScrub dal = new();
+        MessageMock dal = new();
         //act
         var container = new MessageContainer(dal);
         //assert
@@ -24,7 +24,7 @@ public class MessageContainerTest
     public void AddMessageTest()
     {
         //arrange
-        MessageScrub dal = new();
+        MessageMock dal = new();
         var container = new MessageContainer(dal);
         var message = new Message("I would like to make an offer.", 7, 6);
         //act
@@ -40,7 +40,7 @@ public class MessageContainerTest
     public void AddAlreadyContainedMessage()
     {
         //arrange
-        MessageScrub dal = new();
+        MessageMock dal = new();
         var container = new MessageContainer(dal);
         var message = new Message("I would like to make an offer.", 3, 6);
         container.AddMessage(message);
@@ -56,7 +56,7 @@ public class MessageContainerTest
     public void AddEmptyValueMessageTest()
     {
         //arrange
-        MessageScrub dal = new();
+        MessageMock dal = new();
         var container = new MessageContainer(dal);
         var message = new Message("", 6, 2);
         //act
@@ -71,7 +71,7 @@ public class MessageContainerTest
     public void RemoveMessageTest()
     {
         //arrange
-        MessageScrub dal = new();
+        MessageMock dal = new();
         var container = new MessageContainer(dal);
         var message = new Message("I would like to make an offer", 2, 5);
         container.AddMessage(message);
@@ -88,7 +88,7 @@ public class MessageContainerTest
     public void RemoveNonContainedMessage()
     {
         //arrange
-        MessageScrub dal = new();
+        MessageMock dal = new();
         var container = new MessageContainer(dal);
         var message = new Message("I would like to make an offer", 19, 7);
         //act
@@ -100,14 +100,14 @@ public class MessageContainerTest
     public void GetConversationTest() //For some reason messages in messageList cannot be compared to the messages created here, hence the many asserts.
     {
         //arrange
-        MessageScrub dal = new();
+        MessageMock dal = new();
         var container = new MessageContainer(dal);
         var message1 = new Message("I would like to make an offer", 19, 7);
         var message2 = new Message("How much are you willing to pay?", 19, 7);
         container.AddMessage(message1);
         container.AddMessage(message2);
         //act
-        var messageList = container.GetConversation(message1);
+        var messageList = container.GetConversation(message1.SenderId, message1.ReceiverId);
         //assert
         Assert.AreEqual(messageList[0].Content, message1.Content);
         Assert.AreEqual(messageList[0].ReceiverId, message1.ReceiverId);

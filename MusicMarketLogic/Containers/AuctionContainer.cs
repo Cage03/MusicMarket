@@ -59,8 +59,9 @@ public class AuctionContainer
 
     public void UpdateCurrentPrice(Auction auction)
     {
+        var allAuctions = GetAllAuctions();
         var isContained = false;
-        foreach (var _auction in _auctions)
+        foreach (var _auction in allAuctions)
         {
             if (_auction.PersonId == auction.PersonId)
             {

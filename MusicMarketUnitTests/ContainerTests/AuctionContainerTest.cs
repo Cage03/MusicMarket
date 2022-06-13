@@ -3,7 +3,7 @@ using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using MusicMarketLogic.Classes;
 using MusicMarketLogic.Containers;
-using MusicMarketUnitTests.Stubs;
+using MusicMarketUnitTests.Mocks;
 
 namespace MusicMarketUnitTests.ContainerTests;
 
@@ -16,7 +16,7 @@ public class AuctionContainerTest
     public void ConstructorTest()
     {
         //arrange
-        AuctionScrub dal = new();
+        AuctionMock dal = new();
         //act
         var container = new AuctionContainer(dal);
         //assert
@@ -27,7 +27,7 @@ public class AuctionContainerTest
     public void AddAuctionTest()
     {
         //arrange
-        var dal = new AuctionScrub();
+        var dal = new AuctionMock();
         var container = new AuctionContainer(dal);
         var auction = new Auction(DateTime.Now, "Table", 6,19);
         //act
@@ -44,7 +44,7 @@ public class AuctionContainerTest
     public void AddAlreadyContainedAuctionTest()
     {
         //arrange
-        AuctionScrub dal = new();
+        AuctionMock dal = new();
         var container = new AuctionContainer(dal);
         var auction = new Auction(DateTime.Now, "Table", 6,19);
         container.AddAuction(auction);
@@ -61,7 +61,7 @@ public class AuctionContainerTest
     public void AddEmptyValueAuctionTest()
     {
         //arrange
-        AuctionScrub dal = new();
+        AuctionMock dal = new();
         var container = new AuctionContainer(dal);
         var auction = new Auction(DateTime.Now, "", 6,19);
         //act
@@ -75,7 +75,7 @@ public class AuctionContainerTest
     public void RemoveAuctionTest()
     {
         //arrange
-        var dal = new AuctionScrub();
+        var dal = new AuctionMock();
         var container = new AuctionContainer(dal);
         var auction = new Auction(DateTime.Now, "Table", 5,19);
         container.AddAuction(auction);
@@ -90,7 +90,7 @@ public class AuctionContainerTest
     public void RemoveNonContainedAuctionTest()
     {
         //arrange
-        AuctionScrub dal = new();
+        AuctionMock dal = new();
         var container = new AuctionContainer(dal);
         var auction = new Auction(DateTime.Now, "Table", 5,19);
         //act
@@ -103,7 +103,7 @@ public class AuctionContainerTest
     public void GetAllTest()
     {
         //arrange
-        AuctionScrub dal = new();
+        AuctionMock dal = new();
         var container = new AuctionContainer(dal);
         //act
         var auctions = container.GetAllAuctions();
@@ -115,7 +115,7 @@ public class AuctionContainerTest
     public void UpdateCurrentPriceTest()
     {
         //arrange
-        AuctionScrub dal = new();
+        AuctionMock dal = new();
         var container = new AuctionContainer(dal);
         var oldAuction = new Auction(DateTime.Now, "Table", 6,19);
         var newAuction = new Auction(DateTime.Now, "Table", 6, 23);
@@ -131,7 +131,7 @@ public class AuctionContainerTest
     public void UpdateNonContainedAuction()
     {
         //arrange
-        AuctionScrub dal = new();
+        AuctionMock dal = new();
         var container = new AuctionContainer(dal);
         var oldAuction = new Auction(DateTime.Now, "Table", 6,19);
         var newAuction = new Auction(DateTime.Now, "Table", 6, 23);

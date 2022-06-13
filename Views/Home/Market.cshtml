@@ -7,26 +7,31 @@
     <div class="btn-add-advert standard-btn btn-active">
         <a asp-controller="home" asp-action="AddAdvertisement">Add Advert</a>
     </div>
-    
+
     @if (Model.Advertisements.Any())
     {
         foreach (var advert in Model.Advertisements)
         {
-            <div class="advert-block" onclick="showElement('advert-modal'); showElement('modal-background')">
-                <img src="~/images/search_icon.png" alt="search-icon">
-                <p id="itemName">@advert.Name</p>
-                <p id="itemPrice">@advert.Price</p>
-                <p id="itemStatus">@advert.Status</p>
-            </div>
+            <a class="advert-block" asp-action="AdvertModal" 
+                   asp-route-name="@advert.Name" asp-route-price="@advert.Price" asp-route-description="@advert.Description" asp-route-id="@advert.Id">
+                    <img src="~/images/search_icon.png" alt="search-icon">
+                    
+                    <p id="itemName">@advert.Name</p>
+                    <p id="itemPrice">@advert.Price</p>
+                    <p id="itemStatus">Advertisement</p>
+                </a>
         }
     }
-    <div class="advert-modal" id="advert-modal">
-        <p id="modal-itemName"></p>
-        <p id="modal-itemPrice"></p>
-        <p id="modal-itemDescription"></p>
-        <img src="~/images/search_icon.png" alt="search-icon">
-    </div>
-    <div class="advert-modal-background" id="modal-background" onclick="hideElement('advert-modal'); hideElement('modal-background')"></div>
+    @if (Model.Auctions.Any())
+    {
+        foreach (var auction in Model.Auctions)
+        {
+            <a class="advert-block" id="advert-block" asp-action="AuctionModal" asp-route-name="@auction.Name" asp-route-currentPrice="@auction.CurrentPrice" asp-route-id="@auction.PersonId">
+                <img src="~/images/search_icon.png" alt="search-icon">
+                <p id="itemName">@auction.Name</p>
+                <p id="itemPrice">@auction.CurrentPrice</p>
+                <p id="itemStatus">Auction</p>
+            </a>
+        }
+    }
 </div>
-
-

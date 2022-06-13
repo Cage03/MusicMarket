@@ -2,34 +2,37 @@ using System.Collections.Generic;
 using MusicMarketInterface.DTOs;
 using MusicMarketInterface.Interfaces;
 
-namespace MusicMarketUnitTests.Stubs;
+namespace MusicMarketUnitTests.Mocks;
 
-public class AdvertisementScrub : IAdvertisement
+public class AdvertisementMock : IAdvertisement
 {
     public List<AdvertisementDto> AdvertisementDtos = new();
 
-    public AdvertisementScrub()
+    public AdvertisementMock()
     {
         AdvertisementDtos.Add(new AdvertisementDto()
         {
             Description = "TestDescription1",
             Name = "TestName1",
             Price = 1,
-            Status = "Active"
+            Status = "Active",
+            Id = 0
         });
         AdvertisementDtos.Add(new AdvertisementDto()
         {
             Description = "TestDescription2",
             Name = "TestName2",
             Price = 2,
-            Status = "Active"
+            Status = "Active",
+            Id = 1
         });
         AdvertisementDtos.Add(new AdvertisementDto()
         {
             Description = "TestDescription3",
             Name = "TestName3",
             Price = 3,
-            Status = "Active"
+            Status = "Active",
+            Id = 2
         });
     }
 

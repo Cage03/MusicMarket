@@ -1,0 +1,28 @@
+@model MarketAdModel
+
+@{
+    Layout = "_Layout";
+}
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <title>AuctionModal</title>
+</head>
+<body>
+<div class="advert-modal" id="advert-modal">
+    <p id="modal-itemName">@Model.Name</p>
+        <p id="modal-itemPrice">@Model.CurrentPrice</p>
+    <img src="~/images/search_icon.png" alt="search-icon">
+    
+    @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+        @Html.TextBoxFor(model => model.CurrentPrice, new {id="current-price-input", style="position:absolute; right:12%"})
+        <button type="submit" class="standard-btn update-current-price" style="position:absolute; right:12%; margin-top: 35px;">Bid!</button>
+    }
+</div>
+<a class="advert-modal-background" id="modal-background" asp-action="Market"></a>
+</body>
+</html>
