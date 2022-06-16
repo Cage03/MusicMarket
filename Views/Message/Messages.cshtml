@@ -1,0 +1,59 @@
+@using MusicMarketLogic.Classes
+@using System.Reflection.Metadata.Ecma335
+@model MessageViewModel
+@{
+    ViewData["Title"] = "Messages";
+    Layout = "_layout";
+}
+<body>
+<div class="message-screen">
+    @if (Model.Messages.Any())
+    {
+        List<Message> conversations = new();
+        List<Message> toBeRemoved = new();
+        foreach (var modelMessage in Model.Messages)
+        {
+            if (conversations.Count > 0)
+            {
+                foreach (var conversation in conversations)
+                {
+                    if (conversation.ReceiverId == modelMessage.ReceiverId && conversation.SenderId == modelMessage.SenderId)
+                    {
+                        toBeRemoved.Add(conversation);
+                    }
+                }
+                conversations.Add(modelMessage);
+            }
+            else
+            {
+                conversations.Add(modelMessage);
+            }
+        }
+        foreach (var message in toBeRemoved)
+        {
+            conversations.Remove(message);
+        }
+        
+        foreach (var conversation in conversations)
+        {
+            var senderName = "";
+            var receiverName = "";
+            foreach (var person in Model.Persons)
+            {
+                if (conversation.SenderId == person.Id)
+                {
+                    senderName = person.Username;
+                }
+                if (conversation.ReceiverId == person.Id)
+                {
+                    receiverName = person.Username;
+                }
+            }
+            <a asp-controller="Message" asp-action="Conversation" asp-route-senderId="@conversation.SenderId"
+               asp-route-receiverId="@conversation.ReceiverId" class="conversation-container">
+                <p id="sender-receiver">@senderName - @receiverName</p>
+            </a>
+        }
+    }
+</div>
+</body>

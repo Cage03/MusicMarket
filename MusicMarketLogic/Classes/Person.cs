@@ -1,9 +1,14 @@
+using MusicMarketInterface.DTOs;
+
 namespace MusicMarketLogic.Classes;
 
 public class Person
 {
     public string Username { get; private set; }
     public string Email { get; private set; }
+    
+    public string Password { get; private set; }
+    public int Id { get; private set; }
 
     public Person(string username, string email)
     {
@@ -11,13 +16,23 @@ public class Person
         Email = email;
     }
 
-    public void SetUsername(string username)
+    public Person(PersonDto personDto)
     {
-        Username = username;
+        Username = personDto.Username;
+        Email = personDto.Email;
+        Id = personDto.Id;
+        Password = personDto.Password;
     }
 
-    public void SetEmail(string email)
+    public PersonDto ToDto()
     {
-        Email = email;
+        PersonDto dto = new()
+        {
+            Username = Username,
+            Email = Email,
+            Password = Password,
+            Id = Id
+        };
+        return dto;
     }
 }

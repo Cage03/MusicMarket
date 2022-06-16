@@ -41,7 +41,7 @@ public class MessageMock : IMessage
 
     public int RemoveMessage(MessageDto messageDto)
     {
-        MessageDtos.Add(messageDto);
+        MessageDtos.Remove(messageDto);
         return messageDto.Id;
     }
 
@@ -60,8 +60,18 @@ public class MessageMock : IMessage
         return returnList;
     }
 
-    public List<MessageDto> GetAllConversations()
+    public List<MessageDto> GetAllConversations(int personId)
     {
-        return MessageDtos;
+        List<MessageDto> returnList = new();
+
+        foreach (var messageDto in MessageDtos)
+        {
+            if (messageDto.ReceiverId == personId || messageDto.SenderId == personId)
+            {
+                returnList.Add(messageDto);
+            }
+        }
+
+        return returnList;
     }
 }

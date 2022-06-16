@@ -8,4 +8,5 @@ public class AdvertisementDto
     public string Status { get; set; }
     
     public int Id { get; set; }
+    public int PersonId { get; set; }
 }

@@ -1,0 +1,31 @@
+@model MarketAdModel
+
+@{
+    Layout = "_Layout";
+}
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <title>Add Auction</title>
+</head>
+<body>
+<div class="add-advert-screen">
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="add-advert-modal">
+        @Html.TextBoxFor(model => model.Name, new {id = "add-advert-name", placeholder = "Insert Name..."})
+        @Html.TextBoxFor(model => model.CurrentPrice, new {id = "add-advert-price", placeholder = "Insert Price..."})
+        <img src="~/images/search_icon.png" alt="search-icon"> @*Will be of use later*@
+        <button type="submit" id="btn-confirm-advert" class="standard-btn btn-active">Confirm</button>
+    </div>
+    <div class="add-advert-modal-background" id="modal-background">
+        <a asp-controller="Market" asp-action="Market"></a>
+    </div>
+}
+</div>
+</body>
+</html>

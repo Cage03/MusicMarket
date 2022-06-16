@@ -27,10 +27,11 @@ public class Auction
         CurrentPrice = auctionDto.CurrentPrice;
     }
 
-    public void SetName(string name)
+    public Auction()
     {
-        Name = name;
+        
     }
+    
 
     public AuctionDto ToDto()
     {

@@ -1,5 +1,11 @@
 ﻿<wpf:ResourceDictionary xml:space="preserve" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:ss="urn:shemas-jetbrains-com:settings-storage-xaml" xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
 	<s:String x:Key="/Default/Environment/Highlighting/HighlightingSourceSnapshotLocation/@EntryValue">C:\Users\stijn\AppData\Local\JetBrains\Rider2021.3\resharper-host\temp\Rider\vAny\CoverageData\_MusicMarket.996448047\Snapshot\snapshot.utdcvr</s:String>
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=093ca7ff_002Dfbe9_002D4319_002D8ec1_002D43b7d277cdb5/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="All tests from Solution" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+  &lt;Solution /&gt;&#xD;
+&lt;/SessionState&gt;</s:String>
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=1963e71b_002D68a0_002D49ac_002Dbb03_002D2aa3856ca084/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="All tests from Solution #2" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+  &lt;Solution /&gt;&#xD;
+&lt;/SessionState&gt;</s:String>
 	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=39571eee_002Dc69c_002D4dbd_002D9a59_002D73c304482cca/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="AddAdvertisementTest #2" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
   &lt;TestAncestor&gt;&#xD;
     &lt;TestId&gt;MSTest::C13D6A6B-9A66-4E8E-A673-AB2BBA43BA7E::net6.0::MusicMarketUnitTests.ContainerTests.AdvertisementContainerTest.AddAdvertisementTest&lt;/TestId&gt;&#xD;
@@ -24,6 +30,9 @@
     &lt;TestId&gt;MSTest::C13D6A6B-9A66-4E8E-A673-AB2BBA43BA7E::net6.0::MusicMarketUnitTests.ContainerTests.MessageContainerTest&lt;/TestId&gt;&#xD;
   &lt;/TestAncestor&gt;&#xD;
 &lt;/SessionState&gt;</s:String>
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=5240d015_002D8948_002D4abd_002Db092_002Dd2a8c6743c46/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="AddPersonTest" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+  &lt;Solution /&gt;&#xD;
+&lt;/SessionState&gt;</s:String>
 	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=605f081e_002D45e3_002D4366_002D8ffb_002D3194e8db10a2/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="RemoveAdvertisementTest" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
   &lt;TestAncestor&gt;&#xD;
     &lt;TestId&gt;MSTest::C13D6A6B-9A66-4E8E-A673-AB2BBA43BA7E::net6.0::MusicMarketUnitTests.ContainerTests.AdvertisementContainerTest.RemoveAdvertisementTest&lt;/TestId&gt;&#xD;
@@ -38,7 +47,7 @@
 	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=751b3c83_002D7a66_002D4e9a_002Da015_002Da9c5fad437b8/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="GetConversationTest" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
   &lt;Project Location="C:\Users\stijn\RiderProjects\MusicMarket\MusicMarketUnitTests" Presentation="&amp;lt;MusicMarketUnitTests&amp;gt;" /&gt;&#xD;
 &lt;/SessionState&gt;</s:String>
-	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=b41d5d7e_002Df90d_002D4dd1_002Da386_002De97526283306/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="All tests from Solution" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=b41d5d7e_002Df90d_002D4dd1_002Da386_002De97526283306/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="All tests from Solution" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
   &lt;Solution /&gt;&#xD;
 &lt;/SessionState&gt;</s:String>
 	

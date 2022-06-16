@@ -10,9 +10,7 @@ namespace MusicMarketUnitTests.ContainerTests;
 [TestClass]
 public class AuctionContainerTest
 {
-
     [TestMethod]
-
     public void ConstructorTest()
     {
         //arrange
@@ -22,14 +20,28 @@ public class AuctionContainerTest
         //assert
         Assert.IsNotNull(container, "container == null");
     }
-    
+
+    [TestMethod]
+    public void GetAuctionsTest()
+    {
+        //arrange
+        var dal = new AuctionMock();
+        var container = new AuctionContainer(dal);
+        var auction = new Auction(DateTime.Now, "Table", 6, 19);
+        container.AddAuction(auction);
+        //act
+        var thisList = container.GetAuctions();
+        //assert
+        Assert.IsTrue(thisList.Contains(auction));
+    }
+
     [TestMethod]
     public void AddAuctionTest()
     {
         //arrange
         var dal = new AuctionMock();
         var container = new AuctionContainer(dal);
-        var auction = new Auction(DateTime.Now, "Table", 6,19);
+        var auction = new Auction(DateTime.Now, "Table", 6, 19);
         //act
         container.AddAuction(auction);
         //assert
@@ -39,6 +51,7 @@ public class AuctionContainerTest
         Assert.AreEqual(dal.AuctionDtos[^1].CurrentPrice, auction.CurrentPrice);
         Assert.AreEqual(dal.AuctionDtos[^1].PersonId, auction.PersonId);
     }
+
     [TestMethod]
     [ExpectedException(typeof(ArgumentException))]
     public void AddAlreadyContainedAuctionTest()
@@ -46,7 +59,7 @@ public class AuctionContainerTest
         //arrange
         AuctionMock dal = new();
         var container = new AuctionContainer(dal);
-        var auction = new Auction(DateTime.Now, "Table", 6,19);
+        var auction = new Auction(DateTime.Now, "Table", 6, 19);
         container.AddAuction(auction);
         //act
         container.AddAuction(auction);
@@ -54,16 +67,15 @@ public class AuctionContainerTest
         Assert.IsFalse(dal.AuctionDtos.Contains(auction.ToDto()), "Scrub list does not contain auction");
         Assert.IsFalse(container.GetAuctions().Contains(auction), "Container list does not contain auction");
     }
-    
+
     [TestMethod]
     [ExpectedException(typeof(ArgumentException))]
-    
     public void AddEmptyValueAuctionTest()
     {
         //arrange
         AuctionMock dal = new();
         var container = new AuctionContainer(dal);
-        var auction = new Auction(DateTime.Now, "", 6,19);
+        var auction = new Auction(DateTime.Now, "", 6, 19);
         //act
         container.AddAuction(auction);
         //assert
@@ -77,14 +89,14 @@ public class AuctionContainerTest
         //arrange
         var dal = new AuctionMock();
         var container = new AuctionContainer(dal);
-        var auction = new Auction(DateTime.Now, "Table", 5,19);
+        var auction = new Auction(DateTime.Now, "Table", 5, 19);
         container.AddAuction(auction);
         //act
         container.RemoveAuction(auction);
         //assert
-       Assert.IsFalse(dal.AuctionDtos.Contains(auction.ToDto())); 
+        Assert.IsFalse(dal.AuctionDtos.Contains(auction.ToDto()));
     }
-    
+
     [TestMethod]
     [ExpectedException(typeof(ArgumentException))]
     public void RemoveNonContainedAuctionTest()
@@ -92,7 +104,7 @@ public class AuctionContainerTest
         //arrange
         AuctionMock dal = new();
         var container = new AuctionContainer(dal);
-        var auction = new Auction(DateTime.Now, "Table", 5,19);
+        var auction = new Auction(DateTime.Now, "Table", 5, 19);
         //act
         container.RemoveAuction(auction);
         //assert
@@ -117,13 +129,13 @@ public class AuctionContainerTest
         //arrange
         AuctionMock dal = new();
         var container = new AuctionContainer(dal);
-        var oldAuction = new Auction(DateTime.Now, "Table", 6,19);
+        var oldAuction = new Auction(DateTime.Now, "Table", 6, 19);
         var newAuction = new Auction(DateTime.Now, "Table", 6, 23);
         container.AddAuction(oldAuction);
         //act
         container.UpdateCurrentPrice(newAuction);
         //assert
-        Assert.IsTrue(dal.AuctionDtos[3].CurrentPrice == 23,"dal.AuctionDtos[3].CurrentPrice != 23");
+        Assert.IsTrue(dal.AuctionDtos[3].CurrentPrice == 23, "dal.AuctionDtos[3].CurrentPrice != 23");
     }
 
     [TestMethod]
@@ -133,7 +145,7 @@ public class AuctionContainerTest
         //arrange
         AuctionMock dal = new();
         var container = new AuctionContainer(dal);
-        var oldAuction = new Auction(DateTime.Now, "Table", 6,19);
+        var oldAuction = new Auction(DateTime.Now, "Table", 6, 19);
         var newAuction = new Auction(DateTime.Now, "Table", 6, 23);
         //act
         container.UpdateCurrentPrice(newAuction);

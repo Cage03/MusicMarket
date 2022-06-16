@@ -1,0 +1,50 @@
+@model MarketViewModel
+
+@{
+    ViewData["Title"] = "Market";
+}
+<div class="market-screen">
+    <div class="btn-add-advert standard-btn btn-active">
+        <a asp-controller="Advertisement" asp-action="AddAdvertisement">Add Advertisement</a>
+    </div>
+    <div class="btn-add-auction standard-btn btn-active">
+        <a asp-controller="Auction" asp-action="AddAuction">Add Auction</a>
+    </div>
+
+    <p style="position:absolute; right:40px; top: 20px;">User: @Model.username</p>
+    @if (Model.Advertisements.Any())
+    {
+        var senderId = 0;
+        foreach (var person in Model.Persons)
+        {
+            if (person.Username == Model.username)
+            {
+                senderId = person.Id;
+            }
+        }
+        foreach (var advert in Model.Advertisements)
+        {
+            <a class="advert-block" asp-controller="Advertisement" asp-action="AdvertModal" 
+               asp-route-name="@advert.Name" asp-route-price="@advert.Price" asp-route-description="@advert.Description" asp-route-id="@advert.Id" 
+               asp-route-receiverId="@advert.PersonId" asp-route-senderId="@senderId">
+                    <img src="~/images/search_icon.png" alt="search-icon">
+                    
+                    <p id="itemName">@advert.Name</p>
+                    <p id="itemPrice">$@advert.Price</p>
+                    <p id="itemStatus">Advertisement</p>
+                </a>
+        }
+    }
+    @if (Model.Auctions.Any())
+    {
+        foreach (var auction in Model.Auctions)
+        {
+            <a class="advert-block" id="advert-block" asp-controller="Auction" asp-action="AuctionModal" asp-route-name="@auction.Name" asp-route-currentPrice="@auction.CurrentPrice" asp-route-id="@auction.PersonId">
+                <img src="~/images/search_icon.png" alt="search-icon">
+                <p id="itemName">@auction.Name</p>
+                <p id="itemPrice">$@auction.CurrentPrice</p>
+                <p id="itemStatus">Auction</p>
+            </a>
+        }
+    }
+</div>

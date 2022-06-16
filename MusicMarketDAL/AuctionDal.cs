@@ -14,15 +14,16 @@ public class AuctionDal : IAuction
         using var connection = new SqlConnection(ConnectionString);
         connection.Open();
 
-        const string sql = "INSERT INTO auction(Name, Date) " +
-                           "VALUES(@name, @date)";
+        const string sql = "INSERT INTO auction(Name, PersonId, CurrentPrice) " +
+                           "VALUES(@name, @personId, @currentPrice)";
         var rowsAffected = 0;
         try
         {
             using (var cmd = new SqlCommand(sql, connection))
             {
-                cmd.Parameters.AddWithValue("@date", auctionDto.Date);
                 cmd.Parameters.AddWithValue("@name", auctionDto.Name);
+                cmd.Parameters.AddWithValue("@personId", auctionDto.PersonId);
+                cmd.Parameters.AddWithValue("@currentPrice", auctionDto.CurrentPrice);
                 rowsAffected = cmd.ExecuteNonQuery();
             }
         }

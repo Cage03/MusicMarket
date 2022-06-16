@@ -1,0 +1,33 @@
+@model PersonModel
+
+@{
+    Layout = "_Layout";
+}
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <title>Login</title>
+</head>
+<body>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    @Html.LabelFor(model => model.Username)
+    <br/>
+    @Html.TextBoxFor(model => model.Username)
+    <br/>
+    @Html.LabelFor(model => model.Password)
+    <br/>
+    @Html.TextBoxFor(model => model.Password)
+    
+    
+    <button type="submit">Log In</button>
+}
+
+
+</body>
+</html>

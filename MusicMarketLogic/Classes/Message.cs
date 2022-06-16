@@ -25,11 +25,6 @@ public class Message
         ReceiverId = messageDto.ReceiverId;
     }
 
-    public void SetContent(string content)
-    {
-        Content = content;
-    }
-
     public MessageDto toDto()
     {
         MessageDto dto = new()

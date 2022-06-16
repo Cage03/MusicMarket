@@ -10,6 +10,9 @@ public class MarketViewModel
     public List<Advertisement> Advertisements = new();
 
     public List<Auction> Auctions = new();
+
+    public List<Person> Persons = new();
+    public string username { get; set; }
     // public List<MarketAdModel> AdModels = new();
 
     // public void GetAdModels()

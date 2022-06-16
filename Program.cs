@@ -22,6 +22,13 @@ builder.Services.AddScoped<IAdvertisementContainer, AdvertisementContainer>();
     .AddEntityFrameworkStores<ApplicationDbContext>();
 builder.Services.AddControllersWithViews();
 
+
+builder.Services.AddSession(options =>
+{
+    options.Cookie.Name = "UserData";
+    options.IdleTimeout = TimeSpan.FromHours(2);
+});
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -40,13 +47,14 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
+app.UseSession();
 
 app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
+    pattern: "{controller=Home}/{action=Login}/{id?}");
 app.MapRazorPages();
 
 app.Run();

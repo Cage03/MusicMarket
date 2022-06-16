@@ -26,142 +26,53 @@ public class HomeController : Controller
         return View();
     }
 
-    public IActionResult Market()
-    {
-        var marketViewModel = new MarketViewModel();
-        marketViewModel.Advertisements = ContainerFactory.AdvertisementContainer.GetAllAds();
-        marketViewModel.Auctions = ContainerFactory.AuctionContainer.GetAllAuctions();
-        
-        //reverse lists so that the newest items are at the top of the page
-        marketViewModel.Advertisements.Reverse();
-        marketViewModel.Auctions.Reverse();
-        return View(marketViewModel);
-    }
-
-    [HttpPost]
-    public IActionResult Market(Advertisement advertisement)
-    {
-        ContainerFactory.AdvertisementContainer.AddAdvertisement(advertisement);
-        return View();
-    }
-    
-    [HttpPost]
-    public IActionResult PostToModal(string name, double price, string description)
-    {
-        return RedirectToAction("AdvertModal", new MarketAdModel()
-        {
-            Name = name,
-            Price = price,
-            Description = description
-        });
-    }
-    
-    [HttpPost]
-    public IActionResult AddAdvert(MarketAdModel model)
-    {
-        ContainerFactory.AdvertisementContainer.AddAdvertisement(new Advertisement()
-        {
-            Name = model.Name,
-            Description = model.Description,
-            Price = model.Price,
-            Status =model.Status
-        });
-        return RedirectToAction("Market", "Home");
-    }
-    
-    public IActionResult Messages()
-    {
-        var messageViewModel = new MessageViewModel();
-
-        messageViewModel.Messages = ContainerFactory.MessageContainer.GetAllConversations();
-        return View(messageViewModel);
-    }
-
-    public IActionResult Conversation(int senderId, int receiverId)
-    {
-        var messageViewModel = new MessageViewModel();
-
-        messageViewModel.Messages = ContainerFactory.MessageContainer.GetConversation(senderId, receiverId);
-        return View();
-    }
-
-    public IActionResult AddAdvertisement()
+    public IActionResult Login()
     {
         return View();
     }
 
     [HttpPost]
-    public IActionResult AddAdvertisement(MarketAdModel marketAdModel)
+    public IActionResult Login(PersonModel personModel)
     {
-       ContainerFactory.AdvertisementContainer.AddAdvertisement(new Advertisement()
-       {
-           Description = marketAdModel.Description,
-           Name = marketAdModel.Name,
-           Price = marketAdModel.Price,
-           Status = marketAdModel.Status
-       });
-        return RedirectToAction("Market", "Home");
-    }
-
-    [HttpGet]
-    public IActionResult RemoveAdvertisement(int id)
-    {
-        ContainerFactory.AdvertisementContainer.RemoveAdvertisement(new Advertisement()
+        var thisPerson = new Person(new PersonDto()
         {
-            Id = id
+            Password = personModel.Password,
+            Username = personModel.Username
         });
-        return RedirectToAction("Market", "Home");
-    }
-    [HttpGet]
-    public IActionResult AdvertModal(string name, double price, string description, int id)
-    {
-        var marketAdModel = new MarketAdModel()
+        var person = ContainerFactory.PersonContainer.GetPersonByName(thisPerson.Username);
+        if (person.Password == thisPerson.Password &&
+            person.Username == thisPerson.Username)
         {
-            Id = id,
-            Name = name,
-            Price = price,
-            Description = description
-        };
-        return View(marketAdModel);
-    }
-
-    [HttpGet]
-    public IActionResult AuctionModal(string name, double currentPrice, string description, int id)
-    {
-        var marketAdModel = new MarketAdModel()
-        {
-            Id = id,
-            Name = name,
-            CurrentPrice = currentPrice,
-            Description = description
-        };
-        return View(marketAdModel);
-    }
-
-    [HttpPost]
-    public IActionResult AuctionModal(MarketAdModel marketAdModel)
-    {
-        foreach (var auction in ContainerFactory.AuctionContainer.GetAllAuctions())
-        {
-            if (auction.PersonId == marketAdModel.Id)
+            if (Request.Cookies["UserData"] != null)
             {
-                if (auction.CurrentPrice > marketAdModel.CurrentPrice)
-                {
-                    return View();
-                }
+                Response.Cookies.Delete("UserData");
             }
+
+            Response.Cookies.Append("UserData", thisPerson.Username);
+            return RedirectToAction("Market", "Market");
         }
-        ContainerFactory.AuctionContainer.UpdateCurrentPrice(new Auction(new AuctionDto()
+
+        return View();
+    }
+
+    public IActionResult Register()
+    {
+        return View();
+    }
+
+    [HttpPost]
+    public IActionResult Register(PersonModel personModel)
+    {
+        ContainerFactory.PersonContainer.AddPerson(new Person(new PersonDto()
         {
-            CurrentPrice = marketAdModel.CurrentPrice,
-            PersonId = marketAdModel.Id,
-            Date = marketAdModel.Date,
-            Name = marketAdModel.Name
+            Email = personModel.Email,
+            Password = personModel.Password,
+            Username = personModel.Username
         }));
 
-        return RedirectToAction("Market", "Home");
+        return RedirectToAction("Login", "Home");
     }
-    
+
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
     public IActionResult Error()
     {

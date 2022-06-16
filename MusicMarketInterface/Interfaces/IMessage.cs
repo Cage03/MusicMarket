@@ -10,5 +10,5 @@ public interface IMessage
 
     List<MessageDto> GetConversation(int senderId, int receiverId);
 
-    List<MessageDto> GetAllConversations();
+    List<MessageDto> GetAllConversations(int personId);
 }

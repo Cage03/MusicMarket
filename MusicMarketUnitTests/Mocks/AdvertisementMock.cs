@@ -16,6 +16,7 @@ public class AdvertisementMock : IAdvertisement
             Name = "TestName1",
             Price = 1,
             Status = "Active",
+            PersonId = 0,
             Id = 0
         });
         AdvertisementDtos.Add(new AdvertisementDto()
@@ -24,6 +25,7 @@ public class AdvertisementMock : IAdvertisement
             Name = "TestName2",
             Price = 2,
             Status = "Active",
+            PersonId = 0,
             Id = 1
         });
         AdvertisementDtos.Add(new AdvertisementDto()
@@ -32,6 +34,7 @@ public class AdvertisementMock : IAdvertisement
             Name = "TestName3",
             Price = 3,
             Status = "Active",
+            PersonId = 0,
             Id = 2
         });
     }
@@ -41,9 +44,10 @@ public class AdvertisementMock : IAdvertisement
         return AdvertisementDtos;
     }
 
-    public void AddAdvertisement(AdvertisementDto advertisementDto)
+    public int AddAdvertisement(AdvertisementDto advertisementDto)
     {
         AdvertisementDtos.Add(advertisementDto);
+        return advertisementDto.Id;
     }
 
     public int RemoveAdvertisement(AdvertisementDto advertisementDto)

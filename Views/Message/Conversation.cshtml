@@ -1,0 +1,117 @@
+@model MessageViewModel
+
+@{
+    Layout = "_Layout";
+}
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <title>Conversation</title>
+</head>
+<body>
+@if (Model.Messages.Any())
+{
+    var senderName = "";
+    var receiverName = "";
+    foreach (var person in Model.Persons)
+    {
+        if (Model.Messages[0].ReceiverId == person.Id)
+        {
+            receiverName = person.Username;
+        }
+        if (Model.Messages[0].SenderId == person.Id)
+        {
+            senderName = person.Username;
+        }
+    }
+    
+    var i = 0;
+    var j = 0;
+    if (Model.CurrentUser == senderName)
+    {
+        j++;
+    }
+    for (; i < Model.Messages.Count; i++)
+    {
+        <div class="message-container">
+            @if (j % 2 != 0)
+            {
+                <p class="username-left" style="font-weight: bold;">@senderName:</p>
+                <p class="message-left">@Model.Messages[i].Content</p>
+            }
+            else
+            {
+                <p class="username-right" style="margin-left:80%; font-weight: bold;">@receiverName:</p>
+                <p class="message-right" style="margin-left:80%;">@Model.Messages[i].Content</p>
+            }
+        </div>
+        j++;
+    }
+    if (Model.CurrentUser != senderName)
+    {
+        i--;
+    }
+    if ((i + 1) % 2 != 0)
+    {
+        var receiverId = 0;
+        var senderId = 0;
+        foreach (var person in Model.Persons)
+        {
+            if (person.Username == receiverName)
+            {
+                receiverId = person.Id;
+            }
+            if (person.Username == senderName)
+            {
+                senderId = person.Id;
+            }
+        }
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            @Html.TextBoxFor(model => model.newMessage)
+            <button asp-controller="Message" asp-action="Conversation"
+                    asp-route-receiverId="@receiverId" asp-route-senderId="@senderId">Send Message</button>
+        }
+    }
+}
+else
+{
+    var senderName = "";
+    var receiverName = "";
+    var senderId = 0;
+    
+    foreach (var person in Model.Persons)
+    {
+        if (person.Username == Model.CurrentUser)
+        {
+            senderId = person.Id;
+        }
+    }
+    
+    foreach (var person in Model.Persons)
+    {
+        if (Model.NewPerson.Id == person.Id)
+        {
+            receiverName = person.Username;
+        }
+        if (senderId == person.Id)
+        {
+            senderName = person.Username;
+        }
+    }
+    
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        @Html.TextBoxFor(model => model.newMessage)
+        <button asp-controller="Message" asp-action="Conversation"
+                asp-route-receiverId="@Model.NewPerson.Id" asp-route-senderId="@senderId">Send Message</button>
+    }
+}
+</body >
+</html >

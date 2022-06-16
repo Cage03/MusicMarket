@@ -23,23 +23,22 @@ public class AdvertisementContainerTest
     }
 
     [TestMethod]
-    public void AddAdvertisementTest() //todo Icomparable?
+    public void AddAdvertisementTest()
     {
         //arrange
         var dal = new AdvertisementMock();
         var container = new AdvertisementContainer(dal);
-        var advertisement = new Advertisement("TestName", "TestDescription", 19, "Active", 109);
+        var advertisement = new Advertisement("TestName", "TestDescription", 19, "Active", 109, 0);
         //act
         container.AddAdvertisement(advertisement);
-        var containerAdvert = new JObject();
-        var dalAdvert = new JObject();
-        containerAdvert["Advert"] = JToken.FromObject(advertisement);
-        dalAdvert["Advert"] = JToken.FromObject(dal.AdvertisementDtos[^1]);
+        
         //assert
-        // Assert.IsTrue(dal.AdvertisementDtos.Contains(advertisement.ToDto()),
-        //     "List of AdvertisementDtos does not contain advertisement"); //Reminder, < this for some reason doesn't work.
-        Assert.AreEqual(containerAdvert.ToString(), dalAdvert.ToString());
         Assert.IsTrue(container.GetAdvertisements().Contains(advertisement));
+        Assert.AreEqual(advertisement.Name, dal.AdvertisementDtos[^1].Name,"advertisement was not added correctly");
+        Assert.AreEqual(advertisement.Description, dal.AdvertisementDtos[^1].Description,"advertisement was not added correctly");
+        Assert.AreEqual(advertisement.Price, dal.AdvertisementDtos[^1].Price,"advertisement was not added correctly");
+        Assert.AreEqual(advertisement.Status, dal.AdvertisementDtos[^1].Status,"advertisement was not added correctly");
+        Assert.AreEqual(advertisement.Id, dal.AdvertisementDtos[^1].Id,"advertisement was not added correctly");
     }
 
     [TestMethod]
@@ -49,7 +48,7 @@ public class AdvertisementContainerTest
         //arrange
         AdvertisementMock dal = new();
         var container = new AdvertisementContainer(dal);
-        var advertisement = new Advertisement("testName", "testDescription", 5.02, "true", 81);
+        var advertisement = new Advertisement("testName", "testDescription", 5.02, "true", 81, 0);
         container.AddAdvertisement(advertisement);
         //act
         container.AddAdvertisement(advertisement);
@@ -64,7 +63,7 @@ public class AdvertisementContainerTest
         //arrange
         AdvertisementMock dal = new();
         var container = new AdvertisementContainer(dal);
-        var advertisement = new Advertisement("", "testDescription", 5.01, "true", 10);
+        var advertisement = new Advertisement("", "testDescription", 5.01, "true", 10, 0);
         //act
         container.AddAdvertisement(advertisement);
         //assert
@@ -78,7 +77,7 @@ public class AdvertisementContainerTest
         //arrange
         var dal = new AdvertisementMock();
         var container = new AdvertisementContainer(dal);
-        var advertisement = new Advertisement("testName", "testDescription", 5, "true", 19);
+        var advertisement = new Advertisement("testName", "testDescription", 5, "true", 19, 0);
         container.AddAdvertisement(advertisement);
         //act
         container.RemoveAdvertisement(advertisement);
@@ -94,7 +93,7 @@ public class AdvertisementContainerTest
         //arrange
         AdvertisementMock dal = new();
         var container = new AdvertisementContainer(dal);
-        var advertisement = new Advertisement("testName", "testDescription", 5.01, "true", 99);
+        var advertisement = new Advertisement("testName", "testDescription", 5.01, "true", 99, 0);
         //act
         container.RemoveAdvertisement(advertisement);
         //assert

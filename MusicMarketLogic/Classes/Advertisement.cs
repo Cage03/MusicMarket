@@ -9,16 +9,24 @@ public class Advertisement
     public string Description { get; set; }
     public double Price { get; set; }
     public string Status { get; set; }
+
+    public int PersonId { get; set; }
     
     public int Id { get; set; }
 
-    public Advertisement(string name, string description, double price, string status, int id)
+    public Advertisement(string name, string description, double price, string status, int id, int personId)
     {
         Name = name;
         Description = description;
         Price = price;
         Status = status;
         Id = id;
+        PersonId = personId;
+    }
+
+    public Advertisement()
+    {
+        
     }
 
     public Advertisement(AdvertisementDto advertisementDto)
@@ -28,15 +36,7 @@ public class Advertisement
         Price = advertisementDto.Price;
         Status = advertisementDto.Status;
         Id = advertisementDto.Id;
-    }
-
-    public Advertisement()
-    {
-    }
-
-    public void SetName(string name)
-    {
-        Name = name;
+        PersonId = advertisementDto.PersonId;
     }
 
     public AdvertisementDto ToDto()
@@ -47,6 +47,7 @@ public class Advertisement
             Description = Description,
             Price = Price,
             Status = Status,
+            PersonId = PersonId,
             Id = Id
         };
 

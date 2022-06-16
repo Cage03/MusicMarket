@@ -1,6 +1,8 @@
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using MusicMarketInterface.DTOs;
 using MusicMarketLogic.Classes;
 using MusicMarketLogic.Containers;
 using MusicMarketUnitTests.Mocks;
@@ -122,5 +124,25 @@ public class MessageContainerTest
         Assert.AreEqual(dal.MessageDtos[4].Content, message2.Content);
         Assert.AreEqual(dal.MessageDtos[4].SenderId, message2.SenderId);
         Assert.AreEqual(dal.MessageDtos[4].ReceiverId, message2.ReceiverId);
+    }
+
+    [TestMethod]
+    public void GetAllConversationsTest()
+    {
+        //arrange
+        MessageMock dal = new();
+        var container = new MessageContainer(dal);
+        var personId = 0;
+        
+        var message1 = new Message("I would like to make an offer", 0, 7);
+        var message2 = new Message("How much are you willing to pay?", 19, 0);
+        
+        container.AddMessage(message1);
+        container.AddMessage(message2);
+        List<Message> messageList = new();
+        //act
+        messageList = container.GetAllConversations(personId);
+        //assert
+        Assert.AreEqual(2, messageList.Count);
     }
 }

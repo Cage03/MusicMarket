@@ -11,21 +11,22 @@ public class AdvertisementDal : IAdvertisement
 
     //Server=localhost\SQLEXPRESS;Database=master;Trusted_Connection=True; //local db
 
-    public void AddAdvertisement(AdvertisementDto advertisementDto)
+    public int AddAdvertisement(AdvertisementDto advertisementDto)
     {
         using var connection = new SqlConnection(ConnectionString);
         connection.Open();
 
-        const string sql = "INSERT INTO advertisement(Price, Name, Description) " +
-                           "VALUES(@price, @name, @description)";
-        var rowsAffected = 0; //TODO used later when void = int
+        const string sql = "INSERT INTO advertisement(Price, Name, Description, PersonId) " +
+                           "VALUES(@Price, @Name, @Description, @PersonId)";
+        var rowsAffected = 0;
         try
         {
             using (var cmd = new SqlCommand(sql, connection))
             {
-                cmd.Parameters.AddWithValue("@name", advertisementDto.Name);
-                cmd.Parameters.AddWithValue("@price", advertisementDto.Price);
-                cmd.Parameters.AddWithValue("@description", advertisementDto.Description);
+                cmd.Parameters.AddWithValue("@Name", advertisementDto.Name);
+                cmd.Parameters.AddWithValue("@Price", advertisementDto.Price);
+                cmd.Parameters.AddWithValue("@Description", advertisementDto.Description);
+                cmd.Parameters.AddWithValue("@PersonId", advertisementDto.PersonId);
                 rowsAffected = cmd.ExecuteNonQuery();
             }
         }
@@ -38,6 +39,8 @@ public class AdvertisementDal : IAdvertisement
         {
             connection.Close();
         }
+
+        return rowsAffected;
     }
 
 
@@ -90,7 +93,8 @@ public class AdvertisementDal : IAdvertisement
                     Name = (string) reader["Name"],
                     Price = (double) reader["Price"],
                     Status = (string) reader["Status"],
-                    Id = (int) reader["Id"]
+                    Id = (int) reader["Id"],
+                    PersonId = (int) reader["PersonId"]
                 });
             }
         }

@@ -26,23 +26,30 @@ public class AuctionContainer
         {
             throw new ArgumentException("Cannot add duplicate auction");
         }
-        
+
         if (string.IsNullOrWhiteSpace(auction.Name))
         {
             throw new ArgumentException("Not all information is given");
         }
+
         _auctions.Add(auction);
         Auction.AddAuction(auction.ToDto());
     }
 
     public void RemoveAuction(Auction auction)
     {
-        if (!_auctions.Contains(auction))
+        GetAllAuctions();
+        foreach (var _auction in _auctions)
         {
-            throw new ArgumentException("Cannot remove non-contained auction");
+            if (_auction.Name == auction.Name)
+            {
+                _auctions.Remove(_auction);
+                Auction.RemoveAuction(_auction.ToDto());
+                return;
+            }
         }
-        _auctions.Remove(auction);
-        Auction.RemoveAuction(auction.ToDto());
+
+        throw new ArgumentException("Cannot remove non-container auction");
     }
 
     public List<Auction> GetAllAuctions()
@@ -52,6 +59,7 @@ public class AuctionContainer
         foreach (var auctionDto in auctionDtos)
         {
             auctions.Add(new Auction(auctionDto));
+            _auctions.Add(new Auction(auctionDto));
         }
 
         return auctions;
@@ -68,10 +76,12 @@ public class AuctionContainer
                 isContained = true;
             }
         }
+
         if (!isContained)
         {
             throw new ArgumentException("Cannot update non-contained auction");
         }
+
         Auction.UpdateCurrentPrice(auction.ToDto());
     }
 }

@@ -1,0 +1,37 @@
+@using System.Reflection.Emit
+@model PersonModel
+
+@{
+    Layout = "_Layout";
+}
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <title>Register</title>
+</head>
+<body>
+<div>
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken();
+        
+        @Html.LabelFor(model => model.Email)
+        <br/>
+        @Html.TextBoxFor(model => model.Email)
+        <br/>
+        @Html.LabelFor(model => model.Username)
+        <br/>
+        @Html.TextBoxFor(model => model.Username)
+        <br/>
+        @Html.LabelFor(model => model.Password)
+        <br/>
+        @Html.TextBoxFor(model => model.Password)
+        
+        <button type="submit">Create Account</button>
+    }
+
+</div>
+</body>
+</html>

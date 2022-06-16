@@ -46,9 +46,9 @@ public class MessageContainer
         Message.RemoveMessage(message.toDto());
     }
 
-    public List<Message> GetAllConversations()
+    public List<Message> GetAllConversations(int personId)
     {
-        var messageDtos = Message.GetAllConversations();
+        var messageDtos = Message.GetAllConversations(personId);
         _messages.Clear();
         List<Message> messages = new();
         foreach (var messageDto in messageDtos)
