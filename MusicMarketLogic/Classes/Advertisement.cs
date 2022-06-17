@@ -5,7 +5,7 @@ namespace MusicMarketLogic.Classes;
 
 public class Advertisement
 {
-    public string Name { get; set; } //TODO test private setter / init ?
+    public string Name { get; set; }
     public string Description { get; set; }
     public double Price { get; set; }
     public string Status { get; set; }

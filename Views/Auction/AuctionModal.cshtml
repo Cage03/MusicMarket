@@ -14,7 +14,7 @@
 <div class="advert-modal" id="advert-modal">
     <p id="modal-itemName">@Model.Name</p>
     <p id="modal-itemPrice">@Model.CurrentPrice</p>
-    <a asp-controller="Auction" asp-action="RemoveAuction" asp-route-name="@Model.Name" style="position:absolute; top:35%; left:50%;">Remove Advertisement</a>
+    <a asp-controller="Auction" asp-action="RemoveAuction" asp-route-name="@Model.Name" style="position:absolute; top:35%; left:50%;">Remove Auction</a>
     <img src="~/images/search_icon.png" alt="search-icon">
 
     @using (Html.BeginForm())
